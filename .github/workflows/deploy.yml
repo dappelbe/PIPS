@@ -24,6 +24,6 @@ jobs:
              cd $MY_CO_DIR
              git pull --ff-only
              cd code/www/PIPSIntervention
-             ea-php80 /opt/cpanel/composer/bin/composer install
+             ea-php80 /opt/cpanel/composer/bin/composer update
              ea-php80 artisan migrate
             fi
