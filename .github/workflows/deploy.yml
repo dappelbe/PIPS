@@ -7,14 +7,15 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: sims.octru
     steps:
       - name: Display environment
         run: echo ${{ env.environment }}
       - name: Deployment
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@master        
         with:
           host: "pips.octru.ox.ac.uk"
-          key: ${{ pips.octru.secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_KEY }}
           username: "pips"
           script: |
             MY_BASE_DIR="intervention"
