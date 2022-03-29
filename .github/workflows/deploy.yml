@@ -14,7 +14,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: "pips.octru.ox.ac.uk"
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ pips.octru.secrets.SSH_KEY }}
           username: "pips"
           script: |
             MY_BASE_DIR="intervention"
