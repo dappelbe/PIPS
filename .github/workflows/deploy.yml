@@ -8,6 +8,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Display environment
+        run: echo ${{ env.environment }}
       - name: Deployment
         uses: appleboy/ssh-action@master
         with:
