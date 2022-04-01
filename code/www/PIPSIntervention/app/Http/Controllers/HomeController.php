@@ -17,6 +17,16 @@ class HomeController extends Controller
     }
 
     /**
+     * Show the application home page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function root()
+    {
+        return redirect('/');
+    }
+
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
