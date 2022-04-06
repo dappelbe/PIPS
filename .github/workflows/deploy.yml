@@ -40,6 +40,19 @@ jobs:
       
   run-frontend-tests:
     runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: default
+          MYSQL_USER: myuser
+          MYSQL_PASSWORD: myuser
+        ports:
+          - 3306/tcp
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    
     steps:
       - name: Setup
         uses: shivammathur/setup-php@v2
@@ -64,10 +77,7 @@ jobs:
       - name: Create Database
         working-directory: code/www/PIPSIntervention
         run: |
-          sudo systemctl start mysql
           mysql -V
-          mysql --user="root" --password="root" -e "CREATE DATABASE default;"
-          mysql --user="root" --password="root" -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret'";
       - name: Setup Database
         working-directory: code/www/PIPSIntervention
         run: php artisan migrate:fresh --seed
