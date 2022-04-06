@@ -11,6 +11,7 @@ jobs:
       - name: Display environment
         run: echo ${{ env.environment }}
       - name: Psalm – Static Analysis for PHP
+        uses: docker://vimeo/psalm-github-actions
         with:
           security_analysis: true
           report_file: results.sarif
