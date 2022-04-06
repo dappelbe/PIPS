@@ -8,10 +8,12 @@ jobs:
   unittests:
     runs-on: ubuntu-latest
     steps:
-    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+    - name: Setup
+      uses: setup-php@v2
       with:
         php-version: '8.0'
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: Copy .env
       working-directory: code/www/PIPSIntervention
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
@@ -36,34 +38,19 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit --testdox
       
-  cypress-run:
+  run-frontend-tests:
     runs-on: ubuntu-latest
-    needs: [unittests]
-    
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: secret
-          MYSQL_DATABASE: default
-          MYSQL_USER: myuser
-          MYSQL_PASSWORD: myuser
-          DB_HOST: 127.0.0.1
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping" 
-          --health-interval=10s 
-          --health-timeout=5s 
-          --health-retries=3
-    
     steps:
+      - name: Setup
+        uses: setup-php@v2
+        with:
+          php-version: '8.0'
       - name: Checkout
         uses: actions/checkout@v3
       - name: Copy .env
         working-directory: code/www/PIPSIntervention
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-      - name: Install Dependencies
+        run: php -r "file_exists('.env') || copy('.env.test', '.env');"
+      - name: Install Composer Dependencies
         working-directory: code/www/PIPSIntervention
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress
       - name: Use Node.js
@@ -74,24 +61,24 @@ jobs:
       - name: Directory Permissions
         working-directory: code/www/PIPSIntervention
         run: chmod -R 777 storage bootstrap/cache
-      - name: Migrate MySQL DB
+      - name: Create Database
         working-directory: code/www/PIPSIntervention
-        env: 
-          DB_CONNECTION: mysql
-          MYSQL_ROOT_PASSWORD: secret
-          MYSQL_DATABASE: default
-          MYSQL_USER: myuser
-          MYSQL_PASSWORD: myuser
+        run: |
+          sudo systemctl start mysql
+          mysql --user="root" --password="root" -e "CREATE DATABASE default character set UTF8mb4 collate utf8mb4_bin;"
+          mysql --user="root" --password="root" -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret'";
+      - name: Setup Database
+        working-directory: code/www/PIPSIntervention
         run: php artisan migrate:fresh --seed
       - name: Run Cypress UI tests
         working-directory: code/www/PIPSIntervention/tests/Frontend
         run: |
-          npx browserslist@latest --update-db
+          npm ci
           ..\..\node_modules\.bin\cypress run
           
   deploy:
     runs-on: ubuntu-latest
-    needs: [unittests, cypress-run]
+    needs: [unittests, run-frontend-tests]
     steps:
       - name: Deployment
         uses: appleboy/ssh-action@master        
