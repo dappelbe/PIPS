@@ -10,6 +10,14 @@ jobs:
     steps:
       - name: Display environment
         run: echo ${{ env.environment }}
+      - name: Psalm – Static Analysis for PHP
+        with:
+          security_analysis: true
+          report_file: results.sarif
+      - name: Upload Security Analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: results.sarif
       - name: Deployment
         uses: appleboy/ssh-action@master        
         with:
