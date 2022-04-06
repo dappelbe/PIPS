@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Setup
-      uses: setup-php@v2
+      uses: shivammathur/setup-php@v2
       with:
         php-version: '8.0'
     - name: Checkout
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup
-        uses: setup-php@v2
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '8.0'
       - name: Checkout
