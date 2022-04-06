@@ -24,3 +24,5 @@ Homestead.json
 
 # phpstorm
 .idea
+.idea/
+*.pb
