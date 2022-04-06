@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Setup
-      uses: setup-php@v2
+      uses: shivammathur/setup-php@v2
       with:
         php-version: '8.0'
     - name: Checkout
@@ -42,14 +42,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup
-        uses: setup-php@v2
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '8.0'
       - name: Checkout
         uses: actions/checkout@v3
       - name: Copy .env
         working-directory: code/www/PIPSIntervention
-        run: php -r "file_exists('.env') || copy('.env.test', '.env');"
+        run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
       - name: Install Composer Dependencies
         working-directory: code/www/PIPSIntervention
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress
@@ -65,7 +65,7 @@ jobs:
         working-directory: code/www/PIPSIntervention
         run: |
           sudo systemctl start mysql
-          mysql --user="root" --password="root" -e "CREATE DATABASE default character set UTF8mb4 collate utf8mb4_bin;"
+          mysql --user="root" --password="root" -e "CREATE DATABASE default;"
           mysql --user="root" --password="root" -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret'";
       - name: Setup Database
         working-directory: code/www/PIPSIntervention
