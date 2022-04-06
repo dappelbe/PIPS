@@ -65,6 +65,7 @@ jobs:
         working-directory: code/www/PIPSIntervention
         run: |
           sudo systemctl start mysql
+          mysql -V
           mysql --user="root" --password="root" -e "CREATE DATABASE default;"
           mysql --user="root" --password="root" -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret'";
       - name: Setup Database
