@@ -88,6 +88,13 @@ jobs:
         run: chmod -R 777 storage bootstrap/cache
       - name: Setup Database
         working-directory: code/www/PIPSIntervention
+        env: 
+          DB_CONNECTION=mysql
+          DB_HOST=127.0.0.1
+          DB_PORT=3306
+          DB_DATABASE=default
+          DB_USERNAME=myuser
+          DB_PASSWORD=myuser
         run: |
           cat .env
           mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -umyuser -pmyuser -e "SHOW DATABASES"
