@@ -67,6 +67,9 @@ jobs:
       - name: Copy .env
         working-directory: code/www/PIPSIntervention
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
+      - name: Display .env
+        working-directory: code/www/PIPSIntervention
+        run: cat .env
       - name: Install Composer Dependencies
         working-directory: code/www/PIPSIntervention
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress
