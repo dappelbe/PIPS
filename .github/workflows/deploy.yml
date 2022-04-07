@@ -64,11 +64,6 @@ jobs:
           php-version: '8.0'
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Verify MySQL connection
-        run: |
-          mysql --version
-          sudo apt-get install -y mysql-client
-          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -psecret -e "SHOW DATABASES"
       - name: Copy .env
         working-directory: code/www/PIPSIntervention
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
@@ -86,14 +81,12 @@ jobs:
       - name: Setup Database
         working-directory: code/www/PIPSIntervention
         run: |
-          cat .env
-          mysql --host 127.0.0.1 --port 3306 -umyuser -pmyuser -e "SHOW DATABASES"
           php artisan migrate:fresh --seed
       - name: Run Cypress UI tests
         working-directory: code/www/PIPSIntervention/tests/Frontend
         run: |
           npm ci
-          ..\..\node_modules\.bin\cypress run
+          ../../node_modules/.bin/cypress run
           
 #  deploy:
 #    runs-on: ubuntu-latest
