@@ -119,7 +119,6 @@ jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
-    - name: Audit live URL
     - uses: actions/checkout@v2
     - name: Audit URLs using Lighthouse
       uses: treosh/lighthouse-ci-action@v9
