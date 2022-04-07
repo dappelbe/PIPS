@@ -123,6 +123,7 @@ jobs:
     - name: Audit URLs using Lighthouse
       uses: treosh/lighthouse-ci-action@v9
       with:
+        uploadArtifacts: true
         urls: |
           https://pips.octru.ox.ac.uk/
           https://pips.octru.ox.ac.uk/concepts.html
