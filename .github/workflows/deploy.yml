@@ -78,9 +78,9 @@ jobs:
       - name: Directory Permissions
         working-directory: code/www/PIPSIntervention
         run: chmod -R 777 storage bootstrap/cache
-      - name: Build site
-        working-directory: code/www/PIPSIntervention
-        run: npm run dev
+#      - name: Build site
+#        working-directory: code/www/PIPSIntervention
+#        run: npm run dev
       - name: Setup Database
         working-directory: code/www/PIPSIntervention
         run: |
