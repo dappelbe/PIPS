@@ -120,11 +120,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Audit live URL
-      uses: jakejarvis/lighthouse-action@master
+    - uses: actions/checkout@v2
+    - name: Audit URLs using Lighthouse
+      uses: treosh/lighthouse-ci-action@v9
       with:
-        url: 'https://pips.octru.ox.ac.uk'
-    - name: Upload results as an artifact
-      uses: actions/upload-artifact@master
-      with:
-        name: report
-        path: './report'
+        urls: |
+          https://pips.octru.ox.ac.uk/
+          https://pips.octru.ox.ac.uk/concepts.html
+          https://pips.octru.ox.ac.uk/timeline.html
+          https://pips.octru.ox.ac.uk/patients.html
+          https://pips.octru.ox.ac.uk/intervention/login
