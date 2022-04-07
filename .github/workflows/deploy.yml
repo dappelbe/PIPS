@@ -88,6 +88,8 @@ jobs:
       - name: Run Cypress UI tests
         working-directory: code/www/PIPSIntervention/tests/Frontend
         run: |
+          cp cypress.json.ci cypress.json
+          php ../../artisan serve &
           npm ci
           ../../node_modules/.bin/cypress run
           
