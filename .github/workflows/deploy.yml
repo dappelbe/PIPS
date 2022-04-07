@@ -66,7 +66,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Copy .env
         working-directory: code/www/PIPSIntervention
-        run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
+        run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
       - name: Install Composer Dependencies
         working-directory: code/www/PIPSIntervention
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress
