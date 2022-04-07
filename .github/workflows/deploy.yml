@@ -48,7 +48,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: secret
           MYSQL_DATABASE: default
           MYSQL_USER: myuser
           MYSQL_PASSWORD: myuser
@@ -86,10 +86,6 @@ jobs:
       - name: Directory Permissions
         working-directory: code/www/PIPSIntervention
         run: chmod -R 777 storage bootstrap/cache
-      - name: Create Database
-        working-directory: code/www/PIPSIntervention
-        run: |
-          mysql -V
       - name: Setup Database
         working-directory: code/www/PIPSIntervention
         run: php artisan migrate:fresh --seed
