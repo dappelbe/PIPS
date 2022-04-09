@@ -11286,3 +11286,29 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+.top-space {
+    margin-top: 60px;
+}
+.footer1 .widget {
+    margin-bottom: 30px;
+}
+.footer1 a:hover {
+    color: #fff;
+}
+.footer1 a {
+    color: #ccc;
+    text-decoration: none;
+}
+.footer1 {
+    background: #232323;
+    padding: 30px 0 0 0;
+    font-size: 12px;
+    color: #999;
+}
+.footer2 {
+    background: #191919;
+    padding: 15px 0;
+    color: #777;
+    font-size: 12px;
+}

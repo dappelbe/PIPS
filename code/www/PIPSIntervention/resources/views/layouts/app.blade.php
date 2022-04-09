@@ -79,5 +79,77 @@
             @yield('content')
         </main>
     </div>
+
+    <footer id="footer" class="m-2 bg-white">
+
+        <div class="footer1">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-3 widget">
+                        <h3 class="widget-title">Contact</h3>
+                        <div class="widget-body">
+                            <p>
+                                <a href="mailto:Vicki.Barber@ndorms.ox.ac.uk">Vicki.Barber@ndorms.ox.ac.uk</a><br>
+                                <a href="mailto:duncan.appelbe@ndorms.ox.ac.uk">duncan.appelbe@ndorms.ox.ac.uk</a><br>
+                                <br>
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 widget h-100">
+                        <h3 class="widget-title">Funded By</h3>
+                        <div class="widget-body">
+                            <p>
+                                <img class="img-responsive" src="{{asset('images/logo-nihr-1000w-1.png')}}"
+                                     alt="NIHR Funded By Logo"
+                                    height="70em"/>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 widget h-100">
+                        <h3 class="widget-title">Hosted By</h3>
+                        <div class="widget-body">
+                            <p>
+                                <a href="https://www.ndorms.ox.ac.uk/octru" target="_blank">
+                                    <img class="img-responsive" src="{{asset('images/octru-logo.jpg')}}" alt="OCTRU Logo" height="70em"/>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget h-100">
+                        <h3 class="widget-title"></h3>
+                        <div class="widget-body">
+                            <p>
+                                <a href="http://www.admin.ox.ac.uk/foi" target="_blank" rel="noopener"
+                                   class="link-external">Freedom of Information</a> <br/><br/>
+                                <a href="https://www.ndorms.ox.ac.uk/about/data-privacy-notice" target="_blank"
+                                   rel="noopener">Privacy Policy</a> <br/><br/>
+                                <a href="http://www.ndorms.ox.ac.uk/accessibility-statement" target="_blank" rel="noopener" class="link-external">Accessibility Statement</a>
+                            </p>
+                        </div>
+                    </div>
+                </div> <!-- /row of widgets -->
+            </div>
+        </div>
+
+        <div class="footer2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 widget text-center">
+                        <div class="widget-body">
+                            <p class="text-right">
+                                Copyright &copy; 2021, Duncan Appelbe.
+                            </p>
+                        </div>
+                    </div>
+
+                </div> <!-- /row of widgets -->
+            </div>
+        </div>
+
+    </footer>
 </body>
 </html>
