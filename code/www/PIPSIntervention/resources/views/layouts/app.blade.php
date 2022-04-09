@@ -144,7 +144,7 @@
                     <div class="col-md-12 widget text-center">
                         <div class="widget-body">
                             <p class="text-right">
-                                Copyright &copy; 2021, Duncan Appelbe.
+                                Copyright &copy; 2021, OCTRU.
                             </p>
                         </div>
                     </div>
