@@ -6,7 +6,16 @@
         <div class="col-md-10">
             <div class="card shadow-lg">
                 <div class="card-header bg-white text-center">
-                    <img class="img-fluid" src="{{asset('images/pips-logo.png')}}" alt="PIPS Logo"/>
+                    <div class="row">
+                        <div class="col-12">
+                            <img class="img-fluid" src="{{asset('images/pips-logo.png')}}" alt="PIPS Logo"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <img class="img-fluid" src="{{asset('images/translate-logo.png')}}" alt="TRANSLATE Logo"/>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body">
