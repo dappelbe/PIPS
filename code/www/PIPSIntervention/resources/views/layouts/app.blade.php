@@ -11,7 +11,7 @@
     <link rel="icon" type="image/x-icon" href="{{asset('images/pips.ico')}}">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://kit.fontawesome.com/5459a35a3c.js" crossorigin="anonymous"></script>
+    <script src="{{asset('js/fontawesome.js')}}" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -23,10 +23,10 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" data-cy="navlink-pips-home">
                     <img src="{{asset('images/pips-logo.png')}}" alt="PIPS Logo" class="img-thumbnail" style="height: 2em;"/>
                 </a>
-                <a class="navbar-brand" href="https://translate.octru.ox.ac.uk/" target="_blank">
+                <a class="navbar-brand" href="https://translate.octru.ox.ac.uk/" target="_blank" data-cy="navlink-translate-logo">
                     <img src="{{asset('images/translate-logo.png')}}" alt="TRANSLATE Logo" class="img-thumbnail" style="height: 2em;"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -45,25 +45,32 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}" data-cy="link-login">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}" data-cy="link-register">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown"
+                                   class="nav-link dropdown-toggle"
+                                   href="#" role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-haspopup="true"
+                                   aria-expanded="false"
+                                    data-cy="link-username">
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();"
+                                        data-cy="link-logout">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -93,10 +100,9 @@
                         <h3 class="widget-title">Contact</h3>
                         <div class="widget-body">
                             <p>
-                                <a href="mailto:Vicki.Barber@ndorms.ox.ac.uk">Vicki.Barber@ndorms.ox.ac.uk</a><br>
-                                <a href="mailto:duncan.appelbe@ndorms.ox.ac.uk">duncan.appelbe@ndorms.ox.ac.uk</a><br>
+                                <a href="mailto:Vicki.Barber@ndorms.ox.ac.uk" data-cy="mailto-vb">Vicki.Barber@ndorms.ox.ac.uk</a><br>
+                                <a href="mailto:duncan.appelbe@ndorms.ox.ac.uk" data-cy="mailto-da">duncan.appelbe@ndorms.ox.ac.uk</a><br>
                                 <br>
-
                             </p>
                         </div>
                     </div>
@@ -107,6 +113,7 @@
                             <p>
                                 <img class="img-responsive" src="{{asset('images/logo-nihr-1000w-1.png')}}"
                                      alt="NIHR Funded By Logo"
+                                     data-cy="logo-nihr"
                                     height="70em"/>
                             </p>
                         </div>
@@ -117,7 +124,10 @@
                         <div class="widget-body">
                             <p>
                                 <a href="https://www.ndorms.ox.ac.uk/octru" target="_blank">
-                                    <img class="img-responsive" src="{{asset('images/octru-logo.jpg')}}" alt="OCTRU Logo" height="70em"/>
+                                    <img class="img-responsive" src="{{asset('images/octru-logo.jpg')}}"
+                                         alt="OCTRU Logo"
+                                         data-cy="logo-octru"
+                                         height="70em"/>
                                 </a>
                             </p>
                         </div>
@@ -126,11 +136,12 @@
                         <h3 class="widget-title"></h3>
                         <div class="widget-body">
                             <p>
-                                <a href="http://www.admin.ox.ac.uk/foi" target="_blank" rel="noopener"
-                                   class="link-external">Freedom of Information</a> <br/><br/>
-                                <a href="https://www.ndorms.ox.ac.uk/about/data-privacy-notice" target="_blank"
-                                   rel="noopener">Privacy Policy</a> <br/><br/>
-                                <a href="http://www.ndorms.ox.ac.uk/accessibility-statement" target="_blank" rel="noopener" class="link-external">Accessibility Statement</a>
+                                <a href="//compliance.admin.ox.ac.uk/submit-foi" target="_blank" rel="noopener"
+                                   class="link-external" data-cy="link_foi">Freedom of Information</a> <br/><br/>
+                                <a href="//www.ndorms.ox.ac.uk/about/data-privacy-notice" target="_blank"
+                                   rel="noopener" data-cy="link_privacy">Privacy Policy</a> <br/><br/>
+                                <a href="//www.ndorms.ox.ac.uk/accessibility-statement" target="_blank"
+                                   rel="noopener" class="link-external" data-cy="link_accessibility">Accessibility Statement</a>
                             </p>
                         </div>
                     </div>
@@ -148,11 +159,9 @@
                             </p>
                         </div>
                     </div>
-
                 </div> <!-- /row of widgets -->
             </div>
         </div>
-
     </footer>
 </body>
 </html>
