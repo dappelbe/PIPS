@@ -94,7 +94,9 @@ jobs:
           php ../../artisan serve &
           npm ci
           ../../node_modules/.bin/cypress run --browser chrome --headless
-      - uses: actions/upload-artifact@v3
+      - name: Upload artefacts on Fail
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
         with:
           name: cypress-results
           path: videos/
