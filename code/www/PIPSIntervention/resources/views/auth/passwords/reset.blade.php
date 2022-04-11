@@ -6,7 +6,7 @@
         <div class="col-md-10">
             <div class="card shadow-lg">
                 <div class="card-header bg-white text-center">
-                    <img class="img-fluid" src="{{asset('images/pips-logo.png')}}" alt="PIPS Logo"/>
+                    <img class="img-fluid" src="{{asset('images/pips-logo.png')}}" alt="PIPS Logo" data-cy="page-logo"/>
                 </div>
 
                 <div class="card-body">
