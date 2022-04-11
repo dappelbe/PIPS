@@ -30,5 +30,13 @@ describe('001.004 - Password reset page is formatted as correctly', () => {
             cy.get('[data-cy=form-error-msg]').should('be.visible');
             cy.get('[data-cy=form-error-msg]').should('contain.text', 'We can\'t find a user with that email address.');
         });
+        it('Opens the password reset form, enters an known E-Mail address, submits the form and checks that the success message "We have emailed your password reset link!" is displayed', () => {
+            cy.visit('/password/reset');
+            cy.get('[data-cy=input-email]').type('pips@ndorms.ox.ac.uk');
+            cy.get('[data-cy=button-submit]').click();
+            cy.get('[data-cy=form-error-msg]').should('not.exist');
+            cy.get('[data-cy=page-alert]').should('be.visible');
+            cy.get('[data-cy=page-alert]').should('contain.text', 'We have emailed your password reset link!');
+        });
     });
 });
