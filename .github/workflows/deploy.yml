@@ -85,7 +85,7 @@ jobs:
           php artisan migrate:fresh
           php artisan db:SeedTestDatabase
       - name: Run Cypress UI tests
-        working-directory: code/www/PIPSIntervention
+        working-directory: code/www/PIPSIntervention/tests/Frontend
         run: |
           pwd
           cp cypress.json.ci cypress.json
