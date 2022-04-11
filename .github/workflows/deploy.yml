@@ -80,6 +80,7 @@ jobs:
         working-directory: code/www/PIPSIntervention
         run: chmod -R 777 storage bootstrap/cache
       - name: Setup Database
+        working-directory: code/www/PIPSIntervention
         run: |
           php artisan migrate:fresh
           php artisan db:SeedTestDatabase
