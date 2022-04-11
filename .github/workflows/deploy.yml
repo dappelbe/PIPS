@@ -93,7 +93,7 @@ jobs:
       - name: Run Cypress UI tests
         working-directory: code/www/PIPSIntervention/tests/Frontend
         run: |
-          pwd
+          npm install --dev cypress-mailhog
           cp cypress.json.ci cypress.json
           php ../../artisan serve &
           npm ci
