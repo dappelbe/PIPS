@@ -99,7 +99,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cypress-results
-          path: videos/
+          path: code/www/PIPSIntervention/tests/Frontend/videos/
             
   deploy:
     runs-on: ubuntu-latest
