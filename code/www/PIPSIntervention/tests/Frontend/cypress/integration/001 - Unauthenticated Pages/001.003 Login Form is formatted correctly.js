@@ -9,7 +9,6 @@ describe('001.003 - Login form is correctly formatted', () => {
           cy.visit('/');
           //-- Nav bar
           cy.get('[data-cy=link-login]').should('be.visible');
-          cy.get('[data-cy=link-register]').should('be.visible');
           //-- Form
           cy.get('[data-cy=login-logo-pips]').should('be.visible');
           cy.get('[data-cy=login-logo-study]').should('be.visible');
