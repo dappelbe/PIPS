@@ -58,10 +58,6 @@ jobs:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     
-    defaults:
-      run:
-        working-directory: code/www/PIPSIntervention
-    
     steps:
       - name: Setup
         uses: shivammathur/setup-php@v2
@@ -70,31 +66,36 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Copy .env
+        working-directory: code/www/PIPSIntervention
         run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
       - name: Install Composer Dependencies
+        working-directory: code/www/PIPSIntervention
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress
       - name: Use Node.js
         uses: actions/setup-node@v3
       - name: Generate key
+        working-directory: code/www/PIPSIntervention
         run: php artisan key:generate
       - name: Directory Permissions
+        working-directory: code/www/PIPSIntervention
         run: chmod -R 777 storage bootstrap/cache
       - name: Setup Database
         run: |
           php artisan migrate:fresh
           php artisan db:SeedTestDatabase
       - name: Run Cypress UI tests
+        working-directory: code/www/PIPSIntervention
         run: |
           cp cypress.json.ci cypress.json
           php ../../artisan serve &
           npm ci
           ../../node_modules/.bin/cypress run --browser chrome --headless
-      - name: Upload artefacts on Fail
+      - name: Upload Cypress Test Artefacts
         if: ${{ always() }}
         uses: actions/upload-artifact@v3
         with:
           name: cypress-results
-          path: cypress/videos/*.*
+          path: /home/runner/work/PIPS-Intervention/PIPS-Intervention/code/www/PIPSIntervention/tests/Frontend/cypress/videos*.*
             
   deploy:
     runs-on: ubuntu-latest
