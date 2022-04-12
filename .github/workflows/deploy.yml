@@ -74,6 +74,9 @@ jobs:
       - name: Copy .env
         working-directory: code/www/PIPSIntervention
         run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
+      - name: Copy CI config files
+        working-directory: code/www/PIPSIntervention/config
+        run: cp auth.php.ci auth.php
       - name: Install Composer Dependencies
         working-directory: code/www/PIPSIntervention
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress
