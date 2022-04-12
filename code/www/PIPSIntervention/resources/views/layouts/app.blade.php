@@ -156,7 +156,7 @@
                     <div class="col-md-12 widget text-center">
                         <div class="widget-body">
                             <p class="text-right">
-                                Copyright &copy; 2021, OCTRU.
+                                Copyright &copy; 2022, OCTRU.
                             </p>
                         </div>
                     </div>
