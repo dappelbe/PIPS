@@ -28,38 +28,6 @@ describe('001.005 Password Reset E-Mail is formatted correctly', () => {
                 .mhFirst()
                 .mhGetBody()
                 .should('contain', 'Hello!');
-            cy.mhGetAllMails()
-                .mhFirst()
-                .mhGetBody()
-                .should('contain', 'You are receiving this email be=\r\ncause we received a password reset request for your account.');
-            cy.mhGetAllMails()
-                .mhFirst()
-                .mhGetBody()
-                .should('contain', 'This passw=\r\nord reset link will expire in 60 minutes.');
-            cy.mhGetAllMails()
-                .mhFirst()
-                .mhGetBody()
-                .should('contain', 'If you did not request a pas=\r\nsword reset, no further action is required.');
-            cy.mhGetAllMails()
-                .mhFirst()
-                .mhGetBody()
-                .should('contain', 'Regards,');
-            cy.mhGetAllMails()
-                .mhFirst()
-                .mhGetBody()
-                .should('contain', 'PIPs');
-            cy.mhGetAllMails()
-                .mhFirst()
-                .mhGetBody()
-                .should('contain', "If you're having trouble clicking the");
-            cy.mhGetAllMails()
-                .mhFirst()
-                .mhGetBody()
-                .should('contain', "button, copy and paste the URL below");
-            cy.mhGetAllMails()
-                .mhFirst()
-                .mhGetBody()
-                .should('contain', 'into your web browser:');
         });
     });
 });
