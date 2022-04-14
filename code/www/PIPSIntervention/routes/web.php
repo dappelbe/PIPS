@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
+Route::get('/consent/PIPS', [App\Http\Controllers\ConsentController::class, 'pips'])->name('consentforms.pips');
+Route::post('/consent/PIPS/store', [App\Http\Controllers\ConsentController::class, 'store'])->name('consentforms.pips.store');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
