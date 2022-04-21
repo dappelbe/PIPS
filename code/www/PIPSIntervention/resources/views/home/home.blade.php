@@ -90,8 +90,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
     <div class="row">
         &#160;
@@ -105,21 +103,83 @@
                 <div class="card-body">
                     <div class="row flex-grow-1">
                         <div class="col-3 mb-3 h-100">
-                            <button type="button" class="btn btn-primary mb-2 h-100"><h4>Where am I in my study journey?</h4></button>
+                            <a href="{{route('where')}}">
+                                <button type="button" class="btn btn-primary mb-2 h-100"><h4>Where am I in my study journey?</h4></button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3 h-100">
-                            <button type="button" class="btn btn-secondary mb-2 h-100"><h4>The progress of the {{ $studyName }} study</h4></button>
+                            <a href="{{route('progress')}}">
+                                <button type="button" class="btn btn-secondary mb-2 h-100"><h4>The progress of the {{ $studyName }} study</h4></button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3 h-100">
-                            <button type="button" class="btn btn-success mb-2 h-100"><h4>What is due for me next?</h4></button>
+                            <a href="{{route('due')}}">
+                                <button type="button" class="btn btn-success mb-2 h-100"><h4>What is due for me next?</h4></button>
+                            </a>
                         </div>
                         <div class="col-3 mb-3 h-100">
-                            <button type="button" class="btn btn-info mb-2 h-100"><h4>How do I contact the {{ $studyName }} study team?</h4></button>
+                            <a href="{{route('contact')}}">
+                                <button type="button" class="btn btn-info mb-2 h-100"><h4>How do I contact the {{ $studyName }} study team?</h4></button>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row">
+        &#160;
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Download</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row flex-grow-1">
+                        <div class="col-6 mb-3">
+                            <div class="card bg-dark h-100 text-white">
+                                <div class="card-header">
+                                    PIPS
+                                </div>
+                                <div class="card-body align-middle">
+                                    <ul>
+                                        <li>
+                                            <a href="" class="text-decoration-none">Consent form</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://pips.octru.ox.ac.uk/patients.html" class="text-decoration-none" target="_blank">Patient Information Sheet</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="card h-100 text-black bg-light">
+                                <div class="card-header">
+                                    {{ $studyName }}
+                                </div>
+                                <div class="card-body align-middle">
+                                    <ul>
+                                        <li>
+                                            <a href="" class="text-decoration-none">Consent form</a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="text-decoration-none" target="_blank">Patient Information Sheet</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 @endsection

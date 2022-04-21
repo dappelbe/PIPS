@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\StudyController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,3 +23,15 @@ Route::post('/consent/PIPS/store', [App\Http\Controllers\ConsentController::clas
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/where', [App\Http\Controllers\HomeController::class, 'where'])->name('where');
+Route::get('/progress', [App\Http\Controllers\HomeController::class, 'progress'])->name('progress');
+Route::get('/due', [App\Http\Controllers\HomeController::class, 'due'])->name('due');
+Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+
+Route::get('/consent/list', [App\Http\Controllers\ConsentController::class, 'list'])->name('consentforms.pips.list');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('study', StudyController::class);
+});

@@ -84,6 +84,75 @@
         </nav>
 
         <main class="py-4">
+            @guest
+            @else
+                @canany(['user-list','role-list', 'consent-list', 'study-list'])
+                <div class="container">
+                    <div class="card">
+                        <div class="card-body bg-light">
+                            <button class="btn btn-success">
+                                <em class="fa-solid fa-home"></em>&#160;
+                                <a
+                                    class="text-decoration-none text-white"
+                                    href="{{ route('home') }}" role="button"
+                                    data-cy="link-manage-users">
+                                    Home page
+                                </a>
+                            </button>
+
+                            @can(['user-list'])
+                                <button class="btn btn-primary">
+                                    <em class="fa-solid fa-users"></em>&#160;
+                                    <a
+                                        class="text-decoration-none text-white"
+                                        href="{{ route('users.index') }}" role="button"
+                                        data-cy="link-manage-users">
+                                        User Management
+                                    </a>
+                                </button>
+                            @endcan
+                            @can(['role-list'])
+                                <button class="btn btn-primary">
+                                    <em class="fa-solid fa-people-roof"></em>&#160;
+                                    <a
+                                        class="text-decoration-none text-white"
+                                        href="{{ route('roles.index') }}" role="button"
+                                        data-cy="link-manage-roles">
+                                        Role Management
+                                    </a>
+                                </button>
+                            @endcan
+                            @can(['study-list'])
+                                <button class="btn btn-primary">
+                                    <em class="fa-solid fa-building-columns"></em>&#160;
+                                    <a
+                                        class="text-decoration-none text-white"
+                                        href="{{ route('study.index') }}" role="button"
+                                        data-cy="link-manage-consents">
+                                        Study Management
+                                    </a>
+                                </button>
+                            @endcan
+                            @can(['consent-list'])
+                                <button class="btn btn-primary">
+                                    <em class="fa-solid fa-clipboard-check"></em>&#160;
+                                    <a
+                                        class="text-decoration-none text-white"
+                                        href="{{ route('consentforms.pips.list') }}" role="button"
+                                        data-cy="link-manage-consents">
+                                        Consent Management
+                                    </a>
+                                </button>
+                            @endcan
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    &#160;
+                </div>
+                @endcanany
+            @endguest
             @yield('content')
         </main>
     </div>

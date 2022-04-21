@@ -111,17 +111,20 @@
                                     <div class="col-sm-2">
                                         <input type="date" class="form-control" name="consentdate" id="consentdate" placeholder="placeholder" required data-cy="consentdate">
                                     </div>
-                                    <label for="ppt_signature" class="col-sm-2 col-form-label" data-cy="signature-label">Signature</label>
-                                    <div class="col-sm-2">
-                                        <input type="text" class="form-control" name="ppt_signature" id="ppt_signature" placeholder="placeholder" required data-cy="signature">
-                                    </div>
                                 </div>
                                 <div class="form-group row ">
                                     &#160;
                                 </div>
                                 <div class="form-group row ">
                                     <div class="col-12">
-                                        <input type="submit" class="form-control bg-success text-bold"
+                                        <div class="alert alert-primary text-center">
+                                            <div class="h5">Submitting this form is the same as signing a consent form</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-12">
+                                        <input type="submit" class="form-control bg-success text-bold text-white"
                                                name="submit"
                                                id="submit"
                                                data-cy="submit"
