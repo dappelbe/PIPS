@@ -53,6 +53,12 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
+                                    <strong>Study Address:</strong>
+                                    {!! Form::textarea('studyaddress', null, array('placeholder' => 'Address of the central study office','class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
                                     <strong>Study Logo:</strong>
                                     {!! Form::file('studylogo', array('class' => 'form-control')) !!}
                                 </div>
@@ -61,6 +67,18 @@
                                 <div class="form-group">
                                     <strong>Study PIS:</strong>
                                     {!! Form::file('uploadedpis', array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Study Accrual URL:</strong>
+                                    {!! Form::text('studyaccruallink', null, array('placeholder' => 'https://kadoorie.octru.ox.ac.uk/CRAFFT_SIMS/Recruitment','class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Total Expected Study Accrual:</strong>
+                                    {!! Form::text('expectedrecruits', null, array('placeholder' => '1024','class' => 'form-control')) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -91,6 +109,18 @@
                                 <div class="form-group">
                                     <strong>Variable holding Randomised Allocation:</strong>
                                     {!! Form::text('allocationfield', null, array('placeholder' => 'Randomisation Allocation field in report','class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Variable holding Site name:</strong>
+                                    {!! Form::text('sitenamefield', null, array('placeholder' => 'Randomisation Allocation field in report','class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Variable holding randomisation date, or the base date from which all visits are calculated:</strong>
+                                    {!! Form::text('randodatefield', null, array('placeholder' => 'Randomisation date field in report','class' => 'form-control')) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">

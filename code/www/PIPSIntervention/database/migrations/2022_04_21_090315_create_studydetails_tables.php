@@ -23,12 +23,17 @@ return new class extends Migration
             $table->text('studyemail');
             $table->text('studyphone');
             $table->text('studyaddress');
+            $table->text('studyaccruallink');
             $table->boolean('uploadedpis');
             $table->integer('studyrandomisationreportid');
             $table->text('randonumfield');
             $table->text('allocationfield');
             $table->text('sitenamefield');
             $table->integer('studystatusreportid');
+            $table->integer('expectedrecruits');
+            $table->text('randodatefield');
+
+
         });
     }
 

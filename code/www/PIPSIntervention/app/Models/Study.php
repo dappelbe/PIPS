@@ -11,6 +11,7 @@ class Study extends Model
     protected $table = 'studydetails';
     protected $fillable = array('studyname', 'apiurl', 'apikey', 'studylogo',
         'studyemail', 'studyphone', 'uploadedpis', 'studyrandomisationreportid',
-        'randonumfield', 'allocationfield', 'studystatusreportid'
+        'randonumfield', 'allocationfield', 'studystatusreportid', 'studyaddress',
+        'sitenamefield', 'studyaccruallink', 'expectedrecruits', 'randodatefield'
         );
 }
