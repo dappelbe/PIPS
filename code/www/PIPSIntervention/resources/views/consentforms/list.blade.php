@@ -17,6 +17,11 @@
                             <div class="col-12">
                                 The URL to give to participants is {{ url('/consent/PIPS') }}
                             </div>
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success">
+                                    <p>{{ $message }}</p>
+                                </div>
+                            @endif
                             <div class="col-12">
                                 <table id="listtable" class="table table-striped col-12">
                                     <thead>
@@ -35,7 +40,15 @@
                                     <tbody>
                                         @foreach($data as $row)
                                             <tr>
-                                                <td></td>
+                                                <td>
+                                                    @if( $row->takenby == '')
+                                                        <a class="btn btn-primary" href="{{ route('consentforms.pips.edit',$row->id) }}">Edit</a>
+                                                        {!! Form::open(['method' => 'DELETE','route' => ['consentforms.destroy', $row->id],'style'=>'display:inline']) !!}
+                                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                        {!! Form::close() !!}
+                                                    @else
+                                                    @endif
+                                                </td>
                                                 <td>{{$row->updated_at}}</td>
                                                 <td>{{$row->created_at}}</td>
                                                 <td>{{$row->name}}</td>

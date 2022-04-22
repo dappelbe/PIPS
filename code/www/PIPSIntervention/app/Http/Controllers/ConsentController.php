@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Postrequests\PIPSConsentFormRequest;
 use App\Models\ConsentForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ConsentController extends Controller
 {
@@ -68,6 +70,33 @@ class ConsentController extends Controller
         return view('consentforms.list')
             ->with('data', $data)
             ->with('pageTitle', $pageTitle);
+    }
+
+    public function destroy($id)
+    {
+        DB::table("consentform")->where('id',$id)->delete();
+        return redirect()->route('consentforms.pips.list')
+            ->with('success','Form deleted successfully');
+    }
+
+    public function edit($id)
+    {
+        $cf = ConsentForm::find($id);
+
+        return view('consentforms.edit')
+            ->with('row', $cf);
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $cf = ConsentForm::find($id);
+        $cf->takenby = Auth::user()->name;
+        $cf->research_sig = request()->ip();
+        $cf->save();
+
+        return redirect()->route('consentforms.pips.list')
+            ->with('success','Form updated successfully');
     }
 
 }
