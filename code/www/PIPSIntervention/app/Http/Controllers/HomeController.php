@@ -115,7 +115,7 @@ class HomeController extends Controller
     public function where() {
         $pageTitle = 'Where am I in my study journey';
         $studyName = "Not Set";
-
+        $randoDate = date('Y-m-d');
         $id = Auth::id();
         $user = User::find($id);
         if ( isset($user->studyid) && $user->studyid > 0 ) {
@@ -179,6 +179,7 @@ class HomeController extends Controller
 
         return view('home.where')
             ->with('studyName', $studyName)
+            ->with('randoDate', $randoDate)
             ->with('pageTitle', $pageTitle);
     }
 
