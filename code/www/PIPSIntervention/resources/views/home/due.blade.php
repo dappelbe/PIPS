@@ -9,19 +9,51 @@
                     <h3>This is the personalised portal for {{ Auth::user()->name }} in the {{$studyName}} study</h3>
                 </div>
                 <div class="card-body">
-                    <div class="row flex-grow-1">
-                        <div class="col-12">
-                            <table id="mytable" class="table-striped table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th>When</th>
-                                        <th>What</th>
-                                        <th>Details</th>
-                                        <th>Has this happened/been completed?</th>
-                                    </tr>
-                                </thead>
-                            </table>
+                    <div class="row">
+                        <div class="alert alert-success">
+                            <h4>What is due next?</h4>
                         </div>
+                    </div>
+                    <div class="row flex-grow-1">
+                        <div class="col-4">
+                            <div class="alert alert-primary h-100 mb-2">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <i class="fa-solid fa-calendar-days fa-3x"></i>
+                                    </div>
+                                    <div class="col-8">
+                                        <h5>Your next visit is the <strong>6 Month Visit</strong></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="alert alert-info h-100 mb-2">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <i class="fa-solid fa-clock fa-3x"></i>
+                                    </div>
+                                    <div class="col-8">
+                                        <h5>We will send you a reminder in <strong>Two Months</strong></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="alert alert-secondary h-100 mb-2">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <i class="fa-solid fa-thumbs-up fa-3x"></i>
+                                    </div>
+                                    <div class="col-8">
+                                        <h5>By supporting this study you are helping to make future patients better</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        &#160;
                     </div>
                     <div class="row">
                         <div class="col-3">
