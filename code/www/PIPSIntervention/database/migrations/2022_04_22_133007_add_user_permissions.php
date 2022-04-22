@@ -14,10 +14,7 @@ return new class extends Migration
     public function up()
     {
         $permissions = [
-            'user-list',
-            'user-create',
-            'user-edit',
-            'user-delete',
+            'ppt-view',
         ];
 
         foreach ($permissions as $permission) {
