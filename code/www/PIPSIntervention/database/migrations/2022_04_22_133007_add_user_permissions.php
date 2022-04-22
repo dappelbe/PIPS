@@ -21,7 +21,7 @@ return new class extends Migration
         ];
 
         foreach ($permissions as $permission) {
-            Permission::create(['name' => $permission]);
+            \Spatie\Permission\Models\Permission::create(['name' => $permission]);
         }
 
         $role = \Spatie\Permission\Models\Role::create(['name' => 'User']);
