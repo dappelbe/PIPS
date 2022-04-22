@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>This is the personalised portal for {{ Auth::user()->name }}</h3>
+                    <h3>This is the personalised portal for {{ Auth::user()->name }} in the {{$studyName}} study</h3>
                 </div>
                 <div class="card-body">
                     <div class="row flex-grow-1">
