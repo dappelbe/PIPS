@@ -9,13 +9,12 @@
                     <h3>This is the personalised portal for {{ Auth::user()->name }} in the {{$studyName}} study</h3>
                 </div>
                 <div class="card-body">
-                    <div class="row flex-grow-1">
-                        <div class="col-12">
-                            <p class="h4">
-                                The contact details for the central {{ $studyName }} trial team are
-                            </p>
+                    <div class="row">
+                        <div class="alert alert-success">
+                            <h4>The contact details for the central {{ $studyName }} trial team are</h4>
                         </div>
                     </div>
+
                     <div class="row flex-grow-1">
                         <div class="col-4 mb-3">
                             <div class="card h-100" style="background: #1c7430">
