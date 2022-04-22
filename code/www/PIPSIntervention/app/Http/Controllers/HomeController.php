@@ -114,7 +114,71 @@ class HomeController extends Controller
 
     public function where() {
         $pageTitle = 'Where am I in my study journey';
+        $studyName = "Not Set";
+
+        $id = Auth::id();
+        $user = User::find($id);
+        if ( isset($user->studyid) && $user->studyid > 0 ) {
+            $study = Study::find($user->studyid);
+            if ( isset($study) ) {
+                $randoNum = $user->randomisation_number;
+                $studyName = $study->studyname;
+                try {
+                    $rc = new RedCapProject($study->apiurl, $study->apikey);
+                    $records = $rc->exportReports($study->studyrandomisationreportid, 'php', 'label');
+                    $myRandoRec = array();
+                    if ( isset($records) ) {
+                        $myRandoRec = $this->filterArrayByValue($records, $study->randonumfield, $randoNum);
+                    }
+                    if ( count($myRandoRec) > 0 ) {
+                        $recordID = $myRandoRec[0]['record_id'];
+                        $completers = $rc->exportReports($study->studystatusreportid, 'php', 'label');
+                        $myRec = array();
+                        if ( isset($completers) ) {
+                            $myRec = $this->filterArrayByValue($completers, 'record_id', $recordID);
+                            if ( isset( $myRec ) ) {
+                                $events = $rc->exportEvents();
+                                $mapping = $rc->exportInstrumentEventMappings();
+
+                                $mappingData = array();
+
+                                foreach ( $events as $evt ) {
+                                    $evtName = $evt['event_name'];
+                                    $mappingData[$evtName] = array();
+                                    $mappingData[$evtName]['display_name'] = $evtName;
+                                    $mappingData[$evtName]['visit'] = $evtName;
+                                    $mappingData[$evtName]['event'] = $evt['unique_event_name'];
+                                    $mappingData[$evtName]['offset'] = $evt['day_offset'];
+                                    $mappingData[$evtName]['range'] = $evt['day_offset'] + $evt['offset_max'];
+                                    $armid = $evt['unique_event_name'];
+                                    $evtInstrum = $this->filterArrayByValue( $mapping, 'unique_event_name', $armid);
+                                    if ( count($evtInstrum) > 0 ) {
+                                        $mappingData[$evtName]['initial_instrument'] = $evtInstrum[0]['form'];
+                                        $mappingData[$evtName]['visit_instruments'] = '';
+                                        foreach ($evtInstrum as $row) {
+                                            if (strlen($mappingData[$evtName]['visit_instruments']) == 0) {
+                                                $mappingData[$evtName]['visit_instruments'] = $row['form'];
+                                            } else {
+                                                $mappingData[$evtName]['visit_instruments'] = $mappingData[$evtName]['visit_instruments'] . ',' . $row['form'];
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch (PhpCapException $exception) {
+                    Log::error($exception->getMessage());
+                }
+
+
+            }
+        }
+
+
+
         return view('home.where')
+            ->with('studyName', $studyName)
             ->with('pageTitle', $pageTitle);
     }
 
@@ -131,6 +195,7 @@ class HomeController extends Controller
             if ( isset($study) ) {
                 $studyName = $study->studyname;
                 $randoNum = $user->randomisation_number;
+                $expected = $study->expectedrecruits;
                 try {
                     $rc = new RedCapProject($study->apiurl, $study->apikey);
                     $records = $rc->exportReports($study->studyrandomisationreportid, 'php', 'label');
@@ -174,7 +239,19 @@ class HomeController extends Controller
 
     public function due() {
         $pageTitle = 'What is due for me next?';
+        $studyName = "Not Set";
+
+        $id = Auth::id();
+        $user = User::find($id);
+        if ( isset($user->studyid) && $user->studyid > 0 ) {
+            $study = Study::find($user->studyid);
+            if (isset($study)) {
+                $studyName = $study->studyname;
+            }
+        }
+
         return view('home.due')
+            ->with('studyName', $studyName)
             ->with('pageTitle', $pageTitle);
     }
 
@@ -192,7 +269,7 @@ class HomeController extends Controller
                 $studyName = $study->studyname;
                 $phone = $study->studyphone;
                 $email = $study->studyemail;
-                $address = $study->studyaddress;
+                $address = str_replace(PHP_EOL, '<br/>', $study->studyaddress);
             }
         }
 
