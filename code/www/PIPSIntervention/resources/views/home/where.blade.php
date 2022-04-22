@@ -10,6 +10,11 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        <div class="alert alert-success">
+                            <h4>Where am I in my study journey?</h4>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="alert alert-secondary">
                             <div class="row">
                                 <div class="col-12">
