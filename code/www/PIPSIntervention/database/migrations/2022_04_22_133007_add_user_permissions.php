@@ -24,8 +24,8 @@ return new class extends Migration
             Permission::create(['name' => $permission]);
         }
 
-        $role = Role::create(['name' => 'User']);
-        $permissions = Permission::pluck('id','id')->all();
+        $role = \Spatie\Permission\Models\Role::create(['name' => 'User']);
+        $permissions = \Spatie\Permission\Models\Permission::pluck('id','id')->all();
         $role->syncPermissions($permissions);
 
     }
