@@ -15,6 +15,9 @@
                     <div class="card-body bg-white">
                         <div class="row">
                             <div class="col-12">
+                                The URL to give to participants is {{ url('/consent/PIPS') }}
+                            </div>
+                            <div class="col-12">
                                 <table id="listtable" class="table table-striped col-12">
                                     <thead>
                                         <tr>
