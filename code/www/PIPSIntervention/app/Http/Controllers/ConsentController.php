@@ -13,6 +13,7 @@ class ConsentController extends Controller
 
     function __construct()
     {
+        $this->middleware('auth');
         $this->middleware('permission:consent-list|consent-create|consent-edit|consent-delete', ['only' => ['list']]);
         //$this->middleware('permission:consent-create', ['only' => ['create','store']]);
         $this->middleware('permission:consent-edit', ['only' => ['edit','update']]);
