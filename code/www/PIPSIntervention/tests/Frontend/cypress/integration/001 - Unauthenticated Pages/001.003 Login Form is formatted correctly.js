@@ -11,7 +11,6 @@ describe('001.003 - Login form is correctly formatted', () => {
           cy.get('[data-cy=link-login]').should('be.visible');
           //-- Form
           cy.get('[data-cy=login-logo-pips]').should('be.visible');
-          cy.get('[data-cy=login-logo-study]').should('be.visible');
            cy.get('[data-cy=login-title]').should('be.visible');
            cy.get('[data-cy=login-title]').should('contain.text', 'Welcome to the OCTRU Participant Information PortalS');
            cy.get('[data-cy=login-instruction]').should('be.visible');
