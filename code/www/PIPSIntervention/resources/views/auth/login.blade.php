@@ -11,13 +11,6 @@
                             <img class="img-fluid" src="{{asset('images/pips-logo.png')}}" alt="PIPS Logo" data-cy="login-logo-pips"/>
                         </div>
                     </div>
-                    <!--
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <img class="img-fluid" src="{{asset('images/translate-logo.png')}}" alt="TRANSLATE Logo"  data-cy="login-logo-study"/>
-                        </div>
-                    </div>
-                    -->
                 </div>
 
                 <div class="card-body">
