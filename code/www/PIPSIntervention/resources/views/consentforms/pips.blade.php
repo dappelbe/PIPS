@@ -11,7 +11,7 @@
                                 <img class="img-fluid" src="{{asset('images/UoOLogo_sm.png')}}" alt="University of Oxford Logo" data-cy="logo-oxford"/>
                             </div>
                             <div class="col-8 text-center align-self-center">
-                                <h3>PARTICIPANT CONSENT FORM</h3>
+                                <h3 data-cy="page-title">PARTICIPANT CONSENT FORM</h3>
                             </div>
                             <div class="col-2 text-right">
                                 <img class="img-fluid" src="{{asset('images/pips-logo.png')}}" alt="PIPS Logo" data-cy="logo-pips"/>
@@ -19,7 +19,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12 align-self-center text-center">
-                                <strong>
+                                <strong data-cy="page-subtitle">
                                     Is a participant information portal (a mini website) helpful to participants that have agreed to take part in a clinical study or trial?
                                 </strong>
                             </div>
@@ -29,7 +29,7 @@
                         @if(session('status'))
                             <div class="row">
                                 <div class="col-12">
-                                        <div class="alert alert-success">
+                                        <div class="alert alert-success" data-cy="page-alert">
                                             {{ session('status') }}
                                         </div>
                                 </div>

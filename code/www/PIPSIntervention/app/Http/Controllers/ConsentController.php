@@ -13,17 +13,12 @@ class ConsentController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['pips', 'store']]);
         $this->middleware('permission:consent-list|consent-create|consent-edit|consent-delete', ['only' => ['list']]);
-        //$this->middleware('permission:consent-create', ['only' => ['create','store']]);
         $this->middleware('permission:consent-edit', ['only' => ['edit','update']]);
         $this->middleware('permission:consent-delete', ['only' => ['destroy']]);
     }
 
-    /***
-     * Handle Get requests for the PIPS consent form
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
     public function pips() {
         $pageTitle = "PIPs: Consent Form";
         return view('consentforms.pips')

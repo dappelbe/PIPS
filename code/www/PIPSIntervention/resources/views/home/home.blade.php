@@ -29,7 +29,7 @@
                         <div class="col-3 mb-3">
                             <div class="card bg-dark h-100">
                                 <div class="card-body align-middle">
-                                    <i class="fa-solid fa-hashtag fa-2x text-white"></i>
+                                    <em class="fa-solid fa-hashtag fa-2x text-white"></em>
                                     &#160;
                                     <span class="h3" style="color: yellow;">{{ $randoNum }}</span>
                                     <br/>
@@ -44,7 +44,7 @@
                                 <div class="card-body align-middle">
                                     <div class="row">
                                         <div class="col-3">
-                                            <i class="fa-solid fa-arrows-to-circle fa-2x text-white"></i>
+                                            <em class="fa-solid fa-arrows-to-circle fa-2x text-white"></em>
                                         </div>
                                         <div class="col-9">
                                             <h4 class="" style="color: #F7E5A1">You were recruited at the {{$siteName}}.</h4>
@@ -59,7 +59,7 @@
                                 <div class="card-body align-middle">
                                     <div class="row">
                                         <div class="col-3">
-                                            <i class="fa-solid fa-syringe fa-2x text-white"></i>
+                                            <em class="fa-solid fa-syringe fa-2x text-white"></em>
                                         </div>
                                         <div class="col-9">
                                             <h4 class="" style="color: #F7E5A1">You were allocated to the {{$allocation}} arm.</h4>
@@ -74,7 +74,7 @@
                                 <div class="card-body align-middle">
                                     <div class="row">
                                         <div class="col-3">
-                                            <i class="fa-solid fa-people-group text-white fa-3x"></i>
+                                            <em class="fa-solid fa-people-group text-white fa-3x"></em>
                                         </div>
                                         <div class="col-9">
                                             <h4 class="" style="color: #F7E5A1">
@@ -104,22 +104,22 @@
                     <div class="row flex-grow-1">
                         <div class="col-3 mb-3 h-100">
                             <a href="{{route('where')}}">
-                                <button type="button" class="btn btn-primary mb-2 h-100"><h4>Where am I in my study journey?</h4></button>
+                                <button type="button" class="btn btn-primary mb-2 h-100"><span style="font-size: 1.35rem">Where am I in my study journey?</span></button>
                             </a>
                         </div>
                         <div class="col-3 mb-3 h-100">
                             <a href="{{route('progress')}}">
-                                <button type="button" class="btn btn-secondary mb-2 h-100"><h4>The progress of the {{ $studyName }} study</h4></button>
+                                <button type="button" class="btn btn-secondary mb-2 h-100"><span style="font-size: 1.35rem">The progress of the {{ $studyName }} study</span></button>
                             </a>
                         </div>
                         <div class="col-3 mb-3 h-100">
                             <a href="{{route('due')}}">
-                                <button type="button" class="btn btn-success mb-2 h-100"><h4>What is due for me next?</h4></button>
+                                <button type="button" class="btn btn-success mb-2 h-100"><span style="font-size: 1.35rem">What is due for me next?</span></button>
                             </a>
                         </div>
                         <div class="col-3 mb-3 h-100">
                             <a href="{{route('contact')}}">
-                                <button type="button" class="btn btn-info mb-2 h-100"><h4>How do I contact the {{ $studyName }} study team?</h4></button>
+                                <button type="button" class="btn btn-info mb-2 h-100"><span style="font-size: 1.35rem">How do I contact the {{ $studyName }} study team?</span></button>
                             </a>
                         </div>
                     </div>
