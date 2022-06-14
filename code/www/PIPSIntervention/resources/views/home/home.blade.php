@@ -147,9 +147,9 @@
                                 </div>
                                 <div class="card-body align-middle">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a href="" class="text-decoration-none">Consent form</a>
-                                        </li>
+                                        </li>-->
                                         <li>
                                             <a href="https://pips.octru.ox.ac.uk/patients.html" class="text-decoration-none" target="_blank">Patient Information Sheet</a>
                                         </li>
@@ -164,11 +164,11 @@
                                 </div>
                                 <div class="card-body align-middle">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a href="" class="text-decoration-none">Consent form</a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a href="" class="text-decoration-none" target="_blank">Patient Information Sheet</a>
+                                            <a href="https://crafft-info.digitrial.com/" class="text-decoration-none" target="_blank">Patient Information Sheet</a>
                                         </li>
                                     </ul>
                                 </div>
