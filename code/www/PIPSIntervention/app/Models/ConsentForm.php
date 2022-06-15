@@ -6,14 +6,16 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\ConsentForm
  *
  * @mixin Eloquent
  * @property int $id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property int $pis
  * @property int $voluntary
  * @property int $data
@@ -24,22 +26,22 @@ use Illuminate\Support\Facades\DB;
  * @property string $takenby
  * @property string $checkdate
  * @property string $research_sig
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm query()
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm whereAgree($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm whereCheckdate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm whereConsentdate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm whereData($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm wherePis($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm wherePptSignature($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm whereResearchSig($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm whereTakenby($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ConsentForm whereVoluntary($value)
+ * @method static Builder|ConsentForm newModelQuery()
+ * @method static Builder|ConsentForm newQuery()
+ * @method static Builder|ConsentForm query()
+ * @method static Builder|ConsentForm whereAgree($value)
+ * @method static Builder|ConsentForm whereCheckdate($value)
+ * @method static Builder|ConsentForm whereConsentdate($value)
+ * @method static Builder|ConsentForm whereCreatedAt($value)
+ * @method static Builder|ConsentForm whereData($value)
+ * @method static Builder|ConsentForm whereId($value)
+ * @method static Builder|ConsentForm whereName($value)
+ * @method static Builder|ConsentForm wherePis($value)
+ * @method static Builder|ConsentForm wherePptSignature($value)
+ * @method static Builder|ConsentForm whereResearchSig($value)
+ * @method static Builder|ConsentForm whereTakenby($value)
+ * @method static Builder|ConsentForm whereUpdatedAt($value)
+ * @method static Builder|ConsentForm whereVoluntary($value)
  */
 class ConsentForm extends Model
 {
@@ -49,7 +51,7 @@ class ConsentForm extends Model
 
     /***
      * Get a list of all data in the table
-     * @return mixed[]
+     * @return array
      */
    public static function List() : array {
        return DB::table('consentform')->get()->toArray();

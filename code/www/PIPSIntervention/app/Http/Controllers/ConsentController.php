@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Postrequests\PIPSConsentFormRequest;
 use App\Models\ConsentForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +18,8 @@ class ConsentController extends Controller
         $this->middleware('permission:consent-delete', ['only' => ['destroy']]);
     }
 
-    public function pips() {
+    public function pips()
+    {
         $pageTitle = "PIPs: Consent Form";
         return view('consentforms.pips')
             ->with('pageTitle', $pageTitle);
@@ -28,15 +28,6 @@ class ConsentController extends Controller
     public function store(Request $request) {
         $pageTitle = "PIPs: Consent Form";
 
-        $validated = $request->validate([
-            'pis' => 'required',
-            'voluntary' => 'required',
-            'data' => 'required',
-            'agree' => 'required',
-            'name' => 'required',
-            'consentdate' => 'required',
-        ]);
-
         $row = new ConsentForm();
         $row->pis = $request['pis'];
         $row->voluntary = $request['voluntary'];
@@ -44,7 +35,7 @@ class ConsentController extends Controller
         $row->agree = $request['agree'];
         $row->name = $request['name'];
         $row->consentdate = $request['consentdate'];
-        $row->ppt_signature = request()->ip();;
+        $row->ppt_signature = request()->ip();
 
         $row->created_at = date("Y-m-d H:i:s");
         $row->updated_at = date("Y-m-d H:i:s");
