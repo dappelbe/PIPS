@@ -96,7 +96,7 @@ jobs:
         working-directory: code/www/PIPSIntervention/tests/Frontend
         run: |
           npm install --dev cypress-mailhog
-          cp cypress.json.ci cypress.json
+          cp cypress.config.js.ci cypress.config.js
           php ../../artisan serve &
           npm ci
           ../../node_modules/.bin/cypress run --browser chrome --headless
