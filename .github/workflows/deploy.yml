@@ -92,7 +92,6 @@ jobs:
         working-directory: code/www/PIPSIntervention
         run: |
           php artisan migrate:fresh
-          php artisan db:SeedTestDatabase
       - name: Run Cypress UI tests
         working-directory: code/www/PIPSIntervention/tests/Frontend
         run: |
