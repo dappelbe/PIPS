@@ -23,6 +23,7 @@ jobs:
       run: cat .env
     - name: Install SQLITE
       run: |
+        uname -a
         apt-get update
         apt-get install sqlite3
         sqlite3 --version
