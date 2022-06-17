@@ -16,7 +16,7 @@ jobs:
       uses: actions/checkout@v3
     - name: Copy .env
       working-directory: code/www/PIPSIntervention
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      run: php -r "file_exists('.env') || copy('.env.unit', '.env');"
     - name: Display .env
       working-directory: code/www/PIPSIntervention
       run: cat .env
@@ -32,7 +32,7 @@ jobs:
     - name: Create Database
       working-directory: code/www/PIPSIntervention
       run: |
-        mkdir -p database
+#        mkdir -p database
         touch database/database.sqlite
         php artisan migrate
     - name: Execute tests (Unit and Feature tests) via PHPUnit
