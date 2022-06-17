@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActivityTable;
 use App\Models\Study;
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Utilities\RetrieveREDCapData;
+use App\ViewModels\Home\IndexViewModel;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use IU\PHPCap\PhpCapException;
 use IU\PHPCap\RedCapProject;
-use function PHPUnit\Framework\arrayHasKey;
 
 class HomeController extends Controller
 {
@@ -26,9 +30,9 @@ class HomeController extends Controller
     /**
      * Show the application home page.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Application|Factory|View
      */
-    public function root()
+    public function root(): View|Factory|Application
     {
         return redirect('/');
     }
@@ -36,80 +40,17 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Application|Factory|View
      */
-    public function index()
+    public function index(): View|Factory|Application
     {
-        $pageTitle = "PIPs: Dashboard";
-        //-- Current user
-        //-- Page Info - Default
-        $studyName = "Not set";
-        $studyEmail = "Not set";
-        $randoNum = "Not set";
-        $siteName = "Not set";
-        $allocation = "Not set";
-        $recruitNumber = "Not set";
-        $id = Auth::id();
-        $user = User::find($id);
-        if ( isset($user->studyid) && $user->studyid > 0 ) {
-            $study = Study::find($user->studyid);
-            if ( isset($study) ) {
-                $studyName = $study->studyname;
-                $studyEmail = $study->studyemail;
-                $randoNum = $user->randomisation_number;
-                try {
-                    $rc = new RedCapProject($study->apiurl, $study->apikey);
-                    $records = $rc->exportReports($study->studyrandomisationreportid, 'php', 'label');
-                    $myRandoRec = array();
-                    if ( isset($records) ) {
-                        $myRandoRec = $this->filterArrayByValue($records, $study->randonumfield, $randoNum);
-                    }
-                    if ( count($myRandoRec) > 0 ) {
-                        if ( array_key_exists($study->sitenamefield, $myRandoRec[0] ) ) {
-                            $siteName = $myRandoRec[0][$study->sitenamefield];
-                        }
-                        if ( array_key_exists($study->allocationfield, $myRandoRec[0] ) ) {
-                            $allocation = $myRandoRec[0][$study->allocationfield];
-                        }
-                        $ctr = 0;
-                        foreach ($records as $row ) {
-                            $ctr++;
-                            if ($row[$study->randonumfield] == $randoNum) {
-                                break;
-                            }
-                        }
-                        $recruitNumber = $ctr;
-                        if ( str_ends_with($ctr, '1') ) {
-                            $recruitNumber = $recruitNumber . '<sup>st</sup>';
-                        } else if ( str_ends_with($ctr, '2') ) {
-                            $recruitNumber = $recruitNumber . '<sup>nd</sup>';
-                        } else if ( str_ends_with($ctr, '3') ) {
-                            $recruitNumber = $recruitNumber . '<sup>rd</sup>';
-                        } else {
-                            $recruitNumber = $recruitNumber . '<sup>th</sup>';
-                        }
-                    }
-                } catch (PhpCapException $exception) {
-                    Log::error($exception->getMessage());
-                }
-
-
-            }
-        }
-        //-- Last login
-        $lastLogin = "Never";
-        if ( !is_null($user->last_login_at ) ) {
-            $lastLogin = date('l d F Y', strtotime($user->last_login_at)) . ' at ' . date('H:i', strtotime($user->last_login_at));
-        }
+        $rcData = new RetrieveREDCapData();
+        $vm = new IndexViewModel($rcData);
+        ActivityTable::StoreMyActivity($vm->pageTitle, 'Loading');
+        $vm->handle();
         return view('home.home')
-            ->with('lastLogin', $lastLogin)
-            ->with('studyName', $studyName)
-            ->with('studyEmail', $studyEmail)
-            ->with('randoNum', $randoNum)
-            ->with('siteName', $siteName)
-            ->with('allocation', $allocation)
-            ->with('recruitNumber', $recruitNumber)
-            ->with('pageTitle', $pageTitle);
+            ->with('vm', $vm)
+            ->with('pageTitle', $vm->pageTitle);
     }
 
     public function where() {
@@ -285,15 +226,5 @@ class HomeController extends Controller
             ->with('pageTitle', $pageTitle);
     }
 
-    public function filterArrayByValue( array $inputArray, string $filterProperty, string
-                                       $filterValue) : array {
-        $retVal = array();
-        $retVal = array_filter( $inputArray, function($row) use ($filterValue, $filterProperty) {
-            return $row[$filterProperty] == $filterValue;
-        });
-        if ( count($retVal) > 0 ) {
-            $retVal = array_values($retVal);
-        }
-        return $retVal;
-    }
+
 }

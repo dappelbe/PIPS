@@ -96,4 +96,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /***
+     * Function to get and format the date & time that a user last logged in to the system
+     *
+     * @param User $user => The user Object
+     * @return string => Never if the user has never logged in, else in the format day of the week day of the month,
+     * Month of the year, year and time i.e. Wednesday 15 June 2022 at 18:50
+     */
+    public static function getUsersLastLoginAndFormat(User $user) : string {
+        if ( !is_null($user->last_login_at ) ) {
+            return date('l d F Y', strtotime($user->last_login_at))
+                . ' at '
+                . date('H:i', strtotime($user->last_login_at));
+        } else {
+            return 'Never';
+        }
+
+    }
+
 }

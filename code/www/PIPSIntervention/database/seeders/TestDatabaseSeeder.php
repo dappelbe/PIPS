@@ -2,12 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Study;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class TestDatabaseSeeder extends Seeder
 {
@@ -16,19 +12,29 @@ class TestDatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        $user = User::create([
-            'name' => 'PIPS',
-            'email' => 'pips@ndorms.ox.ac.uk',
-            'password' => '$2y$10$8T9RWIS3n3WQPhKArjL/H.HhDs.PgNfJ8/usl/l/6ktInJvksbe62',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
-        ]);
+        $row = new Study();
+        $row->id = 1;
+        $row->created_at = date("Y-m-d H:i:s");
+        $row->updated_at = date("Y-m-d H:i:s");
+        $row->studyname = 'MyStudy';
+        $row->apiurl = 'https://rc.org/api';
+        $row->apikey = 'keykeykeykeykeykeykeykey';
+        $row->studyrandomisationreportid = '1';
+        $row->studyemail = 'study email';
+        $row->studylogo = 'mylogo.png';
+        $row->studyphone = '01865 123 123';
+        $row->studyaddress = 'my address';
+        $row->uploadedpis = 1;
+        $row->randonumfield = 'ra_subj_id';
+        $row->randodatefield = 'date field';
+        $row->allocationfield = 'ra_treat_alloc';
+        $row->sitenamefield = 'ra_cte_id';
+        $row->studystatusreportid = '2';
+        $row->studyaccruallink = 'study accrual link';
+        $row->expectedrecruits = '99';
+        $row->save();
 
-        $role = Role::create(['name' => 'Admin']);
-        $permissions = Permission::pluck('id','id')->all();
-        $role->syncPermissions($permissions);
-        $user->assignRole([$role->id]);
     }
 }
