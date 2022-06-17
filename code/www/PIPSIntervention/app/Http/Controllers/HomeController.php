@@ -6,6 +6,7 @@ use App\Models\ActivityTable;
 use App\Models\Study;
 use App\Models\User;
 use App\Utilities\RetrieveREDCapData;
+use App\Utilities\Util;
 use App\ViewModels\Home\IndexViewModel;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -69,14 +70,14 @@ class HomeController extends Controller
                     $records = $rc->exportReports($study->studyrandomisationreportid, 'php', 'label');
                     $myRandoRec = array();
                     if ( isset($records) ) {
-                        $myRandoRec = $this->filterArrayByValue($records, $study->randonumfield, $randoNum);
+                        $myRandoRec = Util::filterArrayByValue($records, $study->randonumfield, $randoNum);
                     }
                     if ( count($myRandoRec) > 0 ) {
                         $recordID = $myRandoRec[0]['record_id'];
                         $completers = $rc->exportReports($study->studystatusreportid, 'php', 'label');
                         $myRec = array();
                         if ( isset($completers) ) {
-                            $myRec = $this->filterArrayByValue($completers, 'record_id', $recordID);
+                            $myRec = Util::filterArrayByValue($completers, 'record_id', $recordID);
                             if ( isset( $myRec ) ) {
                                 $events = $rc->exportEvents();
                                 $mapping = $rc->exportInstrumentEventMappings();
@@ -92,7 +93,7 @@ class HomeController extends Controller
                                     $mappingData[$evtName]['offset'] = $evt['day_offset'];
                                     $mappingData[$evtName]['range'] = $evt['day_offset'] + $evt['offset_max'];
                                     $armid = $evt['unique_event_name'];
-                                    $evtInstrum = $this->filterArrayByValue( $mapping, 'unique_event_name', $armid);
+                                    $evtInstrum = Util::filterArrayByValue( $mapping, 'unique_event_name', $armid);
                                     if ( count($evtInstrum) > 0 ) {
                                         $mappingData[$evtName]['initial_instrument'] = $evtInstrum[0]['form'];
                                         $mappingData[$evtName]['visit_instruments'] = '';
@@ -143,7 +144,7 @@ class HomeController extends Controller
                     $records = $rc->exportReports($study->studyrandomisationreportid, 'php', 'label');
                     $myRandoRec = array();
                     if ( isset($records) ) {
-                        $myRandoRec = $this->filterArrayByValue($records, $study->randonumfield, $randoNum);
+                        $myRandoRec = Util::filterArrayByValue($records, $study->randonumfield, $randoNum);
                     }
                     if ( count($myRandoRec) > 0 ) {
                         $ctr = 0;
