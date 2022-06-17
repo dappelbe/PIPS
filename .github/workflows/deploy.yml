@@ -32,7 +32,6 @@ jobs:
     - name: Create Database
       working-directory: code/www/PIPSIntervention
       run: |
-#        mkdir -p database
         touch database/database.sqlite
         php artisan migrate
     - name: Execute tests (Unit and Feature tests) via PHPUnit
