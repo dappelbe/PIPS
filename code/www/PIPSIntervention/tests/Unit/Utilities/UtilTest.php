@@ -5,7 +5,7 @@ namespace Utilities;
 use App\Utilities\Util;
 use Tests\TestCase;
 
-class TestUtil extends TestCase
+class UtilTest extends TestCase
 {
     private array $inArray = array(
         array('idx1' => 'One', 'idx2' => 'Two'),

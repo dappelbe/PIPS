@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Mockery;
 use Tests\TestCase;
 
-class TestIndexViewModel extends TestCase
+class IndexViewModelTest extends TestCase
 {
     use DatabaseMigrations;
     use RefreshDatabase;

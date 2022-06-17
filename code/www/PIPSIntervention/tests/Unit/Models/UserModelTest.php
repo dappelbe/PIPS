@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Mockery;
 
-class TestUserModel extends TestCase
+class UserModelTest extends TestCase
 {
     use DatabaseMigrations;
     use RefreshDatabase;
