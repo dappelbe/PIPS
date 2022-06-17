@@ -4,24 +4,25 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <h3 class="text-center">WELCOME</h3>
+            <div class="alert alert-success alert-dismissible fade show"
+                 role="alert" data-cy="welcome-alert">
+                <h3 class="text-center" data-cy="welcome-hdr">WELCOME</h3>
                 <div class="row">
                     <div class="col-12">
-                        <p>Hello {{ Auth::user()->name }} thank you for agreeing to log into and hopefully find this mini website (portal) useful.</p>
-                        <p>The last time that you logged in was: <strong>{{$vm->lastLogin}}</strong></p>
-                        <p>If you wish to send a message to the Central {{ $vm->studyName }} study team – please click <a href="mailto:{{ $vm->studyEmail }}">here</a></p>
-                        <p>If you wish to send a message or give any feedback to the PIPS team <a href="mailto:pips@ndorms.ox.ac.uk?subject=Feedback About the PIPs Site">here</a></p>
-                        <p>Click on the X in the top right-hand corner to clear this message</p>
+                        <p data-cy="w-p1">Hello {{ Auth::user()->name }} thank you for agreeing to log into and hopefully find this mini website (portal) useful.</p>
+                        <p data-cy="w-p2">The last time that you logged in was: <strong>{{$vm->lastLogin}}</strong></p>
+                        <p data-cy="w-p3">If you wish to send a message to the Central {{ $vm->studyName }} study team – please click <a href="mailto:{{ $vm->studyEmail }}">here</a></p>
+                        <p data-cy="w-p4">If you wish to send a message or give any feedback to the PIPS team <a href="mailto:pips@ndorms.ox.ac.uk?subject=Feedback About the PIPs Site">here</a></p>
+                        <p data-cy="w-p5">Click on the X in the top right-hand corner to clear this message</p>
                     </div>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
         <div class="col-12">
-            <div class="card">
+            <div class="card" data-cy="c1">
                 <div class="card-header">
-                    <h3>This is the personalised portal for {{ Auth::user()->name }} in the {{$vm->studyName}} study</h3>
+                    <h3 data-cy="c1-hdr">This is the personalised portal for {{ Auth::user()->name }} in the {{$vm->studyName}} study</h3>
                 </div>
                 <div class="card-body">
                     <div class="row flex-grow-1">
@@ -31,10 +32,10 @@
                                 <div class="card-body align-middle">
                                     <em class="fa-solid fa-hashtag fa-2x text-white"></em>
                                     &#160;
-                                    <span class="h3" style="color: yellow;">{{ $vm->randoNum }}</span>
+                                    <span class="h3" style="color: yellow;" data-cy="c1-b1">{{ $vm->randoNum }}</span>
                                     <br/>
                                     <br/>
-                                    <h5 class="" style="color: #F7E5A1">Your {{ $vm->studyName }} trial number</h5>
+                                    <h5 class="" style="color: #F7E5A1" data-cy="c1-b1-h3">Your {{ $vm->studyName }} trial number</h5>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +48,7 @@
                                             <em class="fa-solid fa-arrows-to-circle fa-2x text-white"></em>
                                         </div>
                                         <div class="col-9">
-                                            <h4 class="" style="color: #F7E5A1">You were recruited at the {{$vm->siteName}}.</h4>
+                                            <h4 class="" style="color: #F7E5A1" data-cy="c1-b2-hdr">You were recruited at the {{$vm->siteName}}.</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +63,7 @@
                                             <em class="fa-solid fa-syringe fa-2x text-white"></em>
                                         </div>
                                         <div class="col-9">
-                                            <h4 class="" style="color: #F7E5A1">You were allocated to the {{$vm->allocation}} arm.</h4>
+                                            <h4 class="" style="color: #F7E5A1" data-cy="c1-b3-hdr">You were allocated to the {{$vm->allocation}} arm.</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -77,9 +78,8 @@
                                             <em class="fa-solid fa-people-group text-white fa-3x"></em>
                                         </div>
                                         <div class="col-9">
-                                            <h4 class="" style="color: #F7E5A1">
-                                                You are the {!! $vm->recruitNumber !!}
-                                                participant who has agreed to take part in the {{$vm->studyName}} trial.
+                                            <h4 class="" style="color: #F7E5A1" data-cy="c1-b4-hdr">
+                                                You are the {!! $vm->recruitNumber !!} participant who has agreed to take part in the {{$vm->studyName}} trial.
                                             </h4>
                                         </div>
                                     </div>
@@ -96,7 +96,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card" data-cy="c2">
                 <div class="card-header">
                     <h3>What would you like to know more about?</h3>
                 </div>
@@ -104,22 +104,26 @@
                     <div class="row flex-grow-1">
                         <div class="col-3 mb-3 h-100">
                             <a href="{{route('where')}}">
-                                <button type="button" class="btn btn-primary mb-2 h-100"><span style="font-size: 1.35rem">Where am I in my study journey?</span></button>
+                                <button type="button" class="btn btn-primary mb-2 h-100">
+                                    <span style="font-size: 1.35rem" data-cy="c2-btn1">Where am I in my study journey?</span></button>
                             </a>
                         </div>
                         <div class="col-3 mb-3 h-100">
                             <a href="{{route('progress')}}">
-                                <button type="button" class="btn btn-secondary mb-2 h-100"><span style="font-size: 1.35rem">The progress of the {{ $vm->studyName }} study</span></button>
+                                <button type="button" class="btn btn-secondary mb-2 h-100">
+                                    <span style="font-size: 1.35rem" data-cy="c2-btn2">The progress of the {{ $vm->studyName }} study</span></button>
                             </a>
                         </div>
                         <div class="col-3 mb-3 h-100">
                             <a href="{{route('due')}}">
-                                <button type="button" class="btn btn-success mb-2 h-100"><span style="font-size: 1.35rem">What is due for me next?</span></button>
+                                <button type="button" class="btn btn-success mb-2 h-100">
+                                    <span style="font-size: 1.35rem" data-cy="c2-btn3">What is due for me next?</span></button>
                             </a>
                         </div>
                         <div class="col-3 mb-3 h-100">
                             <a href="{{route('contact')}}">
-                                <button type="button" class="btn btn-info mb-2 h-100"><span style="font-size: 1.35rem">How do I contact the {{ $vm->studyName }} study team?</span></button>
+                                <button type="button" class="btn btn-info mb-2 h-100">
+                                    <span style="font-size: 1.35rem" data-cy="c2-btn4">How do I contact the {{ $vm->studyName }} study team?</span></button>
                             </a>
                         </div>
                     </div>
@@ -134,15 +138,15 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card" data-cy="c3">
                 <div class="card-header">
-                    <h3>Download</h3>
+                    <h3 data-cy="c3-hdr">Download</h3>
                 </div>
                 <div class="card-body">
                     <div class="row flex-grow-1">
                         <div class="col-6 mb-3">
                             <div class="card bg-dark h-100 text-white">
-                                <div class="card-header">
+                                <div class="card-header" data-cy="c3-pips-hdr">
                                     PIPS
                                 </div>
                                 <div class="card-body align-middle">
@@ -159,7 +163,7 @@
                         </div>
                         <div class="col-6 mb-3">
                             <div class="card h-100 text-black bg-light">
-                                <div class="card-header">
+                                <div class="card-header" data-cy="c3-study-hdr">
                                     {{ $vm->studyName }}
                                 </div>
                                 <div class="card-body align-middle">
