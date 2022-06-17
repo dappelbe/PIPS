@@ -34,7 +34,7 @@ jobs:
       working-directory: code/www/PIPSIntervention
       run: |
         touch database/database.sqlite
-        php artisan migrate
+        php artisan migrate:fresh
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       working-directory: code/www/PIPSIntervention
       env:
