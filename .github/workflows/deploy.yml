@@ -68,7 +68,7 @@ jobs:
       - name: Setup
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.1'
       - name: Checkout
         uses: actions/checkout@v3
       - name: Copy .env
@@ -125,8 +125,8 @@ jobs:
              cd $MY_CO_DIR
              git pull --ff-only
              cd code/www/PIPSIntervention
-             ea-php80 /opt/cpanel/composer/bin/composer update
-             ea-php80 artisan migrate
+             ea-php81 /opt/cpanel/composer/bin/composer update
+             ea-php81 artisan migrate
             fi
 
   audit:
