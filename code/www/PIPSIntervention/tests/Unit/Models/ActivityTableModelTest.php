@@ -1,11 +1,15 @@
 <?php
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\ActivityTable;
 use App\Models\Enums\ActivityTableEnums;
 
 class ActivityTableModelTest extends TestCase
 {
+    use DatabaseMigrations;
+    use RefreshDatabase;
 
     public function testStoreMyActivity_Logs_an_error_with_an_empty_pageName() : void {
         $pageName = '';
