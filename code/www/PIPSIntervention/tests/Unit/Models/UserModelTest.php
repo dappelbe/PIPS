@@ -12,11 +12,6 @@ class UserModelTest extends TestCase
     use DatabaseMigrations;
     use RefreshDatabase;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function testgetUsersLastLoginAndFormatReturnsNeverWithANullLastLogin() {
         $user = User::factory()->create();
         $this->assertEquals('Never', User::getUsersLastLoginAndFormat($user));
