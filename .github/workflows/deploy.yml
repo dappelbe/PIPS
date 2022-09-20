@@ -45,7 +45,7 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit --configuration phpunit.xml --teamcity
+      run: vendor/bin/phpunit --configuration phpunit.xml --testdox
      
   run-frontend-tests:
     runs-on: ubuntu-latest
