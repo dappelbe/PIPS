@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Unit Tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" singleton="false">
-    <TestRunner class="Tests\Unit\Models\TestActivityTableModel" configuration_file="$PROJECT_DIR$/code/www/PIPSIntervention/phpunit.xml" directory="$PROJECT_DIR$/code/www/PIPSIntervention/tests/Unit" file="$PROJECT_DIR$/code/www/PIPSIntervention/tests/Unit/Models/TestActivityTableModel.php" />
+    <TestRunner class="Tests\Unit\Models\TestActivityTableModel" configuration_file="$PROJECT_DIR$/code/www/PIPSIntervention/phpunit.xml" directory="$PROJECT_DIR$/code/www/PIPSIntervention/tests/Unit" file="$PROJECT_DIR$/code/www/PIPSIntervention/tests/Unit/Models/ActivityTableModelTest.php" />
     <method v="2" />
   </configuration>
 </component>

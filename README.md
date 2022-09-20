@@ -7,3 +7,5 @@ https://medium.com/kreuzwerker-gmbh/e2e-testing-of-emails-in-mailhog-using-cypre
 https://github.com/SMenigat/cypress-mailhog
 
 https://www.twilio.com/blog/customize-email-verification-password-resets-laravel
+
+Laravel Helper
