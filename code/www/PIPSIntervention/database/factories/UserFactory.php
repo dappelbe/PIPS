@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
-            'last_login_at' => null,
+            'last_login_at' => '',
             'randomisation_number' => 'CR-AAA-10001',
             'studyid' => '1'
         ];
