@@ -38,6 +38,7 @@ jobs:
     - name: Create Database
       working-directory: code/www/PIPSIntervention
       run: |
+        mkdir -p database
         touch database/database.sqlite
         php artisan migrate:fresh
         php artisan migrate:status
@@ -46,7 +47,7 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit --configuration phpunit.xml --testdox
+      run: vendor/bin/phpunit --testdox
      
   run-frontend-tests:
     runs-on: ubuntu-latest
