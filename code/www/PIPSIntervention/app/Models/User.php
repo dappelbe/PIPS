@@ -105,7 +105,7 @@ class User extends Authenticatable
      * Month of the year, year and time i.e. Wednesday 15 June 2022 at 18:50
      */
     public static function getUsersLastLoginAndFormat(User $user) : string {
-        if ( !is_null($user->last_login_at ) ) {
+        if ( !is_null($user->last_login_at ) || strlen(trim($user->last_login_at)) == 0 ) {
             return date('l d F Y', strtotime($user->last_login_at))
                 . ' at '
                 . date('H:i', strtotime($user->last_login_at));
