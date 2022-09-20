@@ -8,24 +8,24 @@ jobs:
   unittests:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: secret
-          MYSQL_DATABASE: default
-          MYSQL_USER: myuser
-          MYSQL_PASSWORD: myuser
-          DB_HOST: 127.0.0.1
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
-      mailhog:
-        image: 'mailhog/mailhog:latest'
-        ports:
-          - 8025:8025
-          - 1025:1025
+#    services:
+#      mysql:
+#        image: mysql:5.7
+#        env:
+#          MYSQL_ROOT_PASSWORD: secret
+#          MYSQL_DATABASE: default
+#          MYSQL_USER: myuser
+#          MYSQL_PASSWORD: myuser
+#          DB_HOST: 127.0.0.1
+#        ports:
+#          - 3306:3306
+#        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+#
+#      mailhog:
+#        image: 'mailhog/mailhog:latest'
+#        ports:
+#          - 8025:8025
+#          - 1025:1025
 
     steps:
     - name: Setup
@@ -57,108 +57,89 @@ jobs:
         php artisan migrate:status
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       working-directory: code/www/PIPSIntervention
-      run: vendor/bin/phpunit --testdox
+      run: |
+        php artisan cache:clear
+        vendor/bin/phpunit --testdox
      
-  run-frontend-tests:
-    runs-on: ubuntu-latest
-    needs: [unittests]
-    
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: secret
-          MYSQL_DATABASE: default
-          MYSQL_USER: myuser
-          MYSQL_PASSWORD: myuser
-          DB_HOST: 127.0.0.1
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-    
-      mailhog:
-        image: 'mailhog/mailhog:latest'
-        ports:
-         - 8025:8025
-         - 1025:1025
-    
-    steps:
-      - name: Setup
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.1'
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Copy .env
-        working-directory: code/www/PIPSIntervention
-        run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
-      - name: Copy CI config files
-        working-directory: code/www/PIPSIntervention/config
-        run: cp auth.php.ci auth.php
-      - name: Install Composer Dependencies
-        working-directory: code/www/PIPSIntervention
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-      - name: Generate key
-        working-directory: code/www/PIPSIntervention
-        run: php artisan key:generate
-      - name: Directory Permissions
-        working-directory: code/www/PIPSIntervention
-        run: chmod -R 777 storage bootstrap/cache
-      - name: Setup Database
-        working-directory: code/www/PIPSIntervention
-        run: |
-          php artisan migrate:fresh
-      - name: Run Cypress UI tests
-        working-directory: code/www/PIPSIntervention/tests/Frontend
-        run: |
-          npm install --dev cypress-mailhog
-          cp cypress.config.js.ci cypress.config.js
-          php ../../artisan serve &
-          npm ci
-          ../../node_modules/.bin/cypress run --browser chrome --headless
-      - name: Upload Cypress Test Artefacts
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v3
-        with:
-          name: cypress-results
-          path: code/www/PIPSIntervention/tests/Frontend/cypress/videos/
+#  run-frontend-tests:
+#    runs-on: ubuntu-latest
+#    needs: [unittests]
+#
+#    services:
+#      mysql:
+#        image: mysql:5.7
+#        env:
+#          MYSQL_ROOT_PASSWORD: secret
+#          MYSQL_DATABASE: default
+#          MYSQL_USER: myuser
+#          MYSQL_PASSWORD: myuser
+#          DB_HOST: 127.0.0.1
+#        ports:
+#          - 3306:3306
+#        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+#
+#      mailhog:
+#        image: 'mailhog/mailhog:latest'
+#        ports:
+#         - 8025:8025
+#         - 1025:1025
+#
+#    steps:
+#      - name: Setup
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: '8.1'
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#      - name: Copy .env
+#        working-directory: code/www/PIPSIntervention
+#        run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
+#      - name: Copy CI config files
+#        working-directory: code/www/PIPSIntervention/config
+#        run: cp auth.php.ci auth.php
+#      - name: Install Composer Dependencies
+#        working-directory: code/www/PIPSIntervention
+#        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress
+#      - name: Use Node.js
+#        uses: actions/setup-node@v3
+#      - name: Generate key
+#        working-directory: code/www/PIPSIntervention
+#        run: php artisan key:generate
+#      - name: Directory Permissions
+#        working-directory: code/www/PIPSIntervention
+#        run: chmod -R 777 storage bootstrap/cache
+#      - name: Setup Database
+#        working-directory: code/www/PIPSIntervention
+#        run: |
+#          php artisan migrate:fresh
+#      - name: Run Cypress UI tests
+#        working-directory: code/www/PIPSIntervention/tests/Frontend
+#        run: |
+#          npm install --dev cypress-mailhog
+#          cp cypress.config.js.ci cypress.config.js
+#          php ../../artisan serve &
+#          npm ci
+#          ../../node_modules/.bin/cypress run --browser chrome --headless
+#      - name: Upload Cypress Test Artefacts
+#        if: ${{ always() }}
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: cypress-results
+#          path: code/www/PIPSIntervention/tests/Frontend/cypress/videos/
             
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [run-frontend-tests]
-    steps:
-      - name: Deployment
-        uses: appleboy/ssh-action@master        
-        with:
-          host: "pips.octru.ox.ac.uk"
-          key: ${{ secrets.SSH_KEY }}
-          username: "pips"
-          script: |
-            MY_BASE_DIR="intervention"
-            MY_CO_DIR="pipsrepo"
-            if [ -d "$MY_BASE_DIR" ]; then
-             cd $MY_BASE_DIR
-             cd $MY_CO_DIR
-             git pull --ff-only
-             cd code/www/PIPSIntervention
-             ea-php81 /opt/cpanel/composer/bin/composer update
-             ea-php81 artisan migrate
-            fi
 
-  audit:
-    runs-on: ubuntu-latest
-    needs: [deploy]
-    steps:
-    - uses: actions/checkout@v2
-    - name: Audit URLs using Lighthouse
-      uses: treosh/lighthouse-ci-action@v9
-      with:
-        uploadArtifacts: true
-        urls: |
-          https://pips.octru.ox.ac.uk/
-          https://pips.octru.ox.ac.uk/concepts.html
-          https://pips.octru.ox.ac.uk/timeline.html
-          https://pips.octru.ox.ac.uk/patients.html
-          https://pips.octru.ox.ac.uk/intervention/login
+#  audit:
+#    runs-on: ubuntu-latest
+#    needs: [deploy]
+#    steps:
+#    - uses: actions/checkout@v2
+#    - name: Audit URLs using Lighthouse
+#      uses: treosh/lighthouse-ci-action@v9
+#      with:
+#        uploadArtifacts: true
+#        urls: |
+#          https://pips.octru.ox.ac.uk/
+#          https://pips.octru.ox.ac.uk/concepts.html
+#          https://pips.octru.ox.ac.uk/timeline.html
+#          https://pips.octru.ox.ac.uk/patients.html
+#          https://pips.octru.ox.ac.uk/intervention/login
