@@ -45,7 +45,7 @@ jobs:
       working-directory: code/www/PIPSIntervention
       env:
         DB_CONNECTION: sqlite
-        DB_DATABASE: ":memory:"
+        DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit --configuration phpunit.xml --testdox
      
   run-frontend-tests:
