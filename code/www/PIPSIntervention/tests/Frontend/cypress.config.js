@@ -9,5 +9,13 @@ module.exports = defineConfig({
       return require('./cypress/plugins/index.js')(on, config)
     },
     baseUrl: 'http://localhost',
+      env: {
+        db: {
+            "host" : "127.0.0.1",
+            "user" : "myuser",
+            "password" : "myuser",
+            "database" : "default"
+        }
+      }
   },
 })
