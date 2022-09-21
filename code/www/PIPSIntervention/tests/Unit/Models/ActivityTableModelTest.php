@@ -8,7 +8,7 @@ use App\Models\Enums\ActivityTableEnums;
 
 class ActivityTableModelTest extends TestCase
 {
-
+    use RefreshDatabase;
 
     public function testStoreMyActivity_Logs_an_error_with_an_empty_pageName() : void {
         $pageName = '';

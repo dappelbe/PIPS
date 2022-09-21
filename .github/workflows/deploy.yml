@@ -115,7 +115,7 @@ jobs:
 #      - name: Run Cypress UI tests
 #        working-directory: code/www/PIPSIntervention/tests/Frontend
 #        run: |
-#          npm install --dev cypress-mailhog
+#          npm install --dev cypress-mailhog mysql
 #          cp cypress.config.js.ci cypress.config.js
 #          php ../../artisan serve &
 #          npm ci

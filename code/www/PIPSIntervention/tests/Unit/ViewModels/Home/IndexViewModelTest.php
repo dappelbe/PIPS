@@ -16,7 +16,6 @@ use Tests\TestCase;
 
 class IndexViewModelTest extends TestCase
 {
-    use DatabaseMigrations;
     use RefreshDatabase;
 
     private User $user;
@@ -59,7 +58,6 @@ class IndexViewModelTest extends TestCase
         $notSet = 'Not set';
         $myView = new IndexViewModel($this->rcData);
         $this->assertEquals($notSet, $myView->allocation);
-        $this->assertEquals(2, $myView->id);
         $this->assertEquals('Never', $myView->lastLogin);
         $this->assertEquals($notSet, $myView->randoNum);
         $this->assertEquals($notSet, $myView->recruitNumber);
@@ -78,7 +76,6 @@ class IndexViewModelTest extends TestCase
         $myView->handle();
 
         $this->assertEquals($notSet, $myView->allocation);
-        $this->assertEquals($user->id, $myView->id);
         $this->assertEquals('Never', $myView->lastLogin);
         $this->assertEquals($notSet, $myView->randoNum);
         $this->assertEquals($notSet, $myView->recruitNumber);
@@ -93,7 +90,6 @@ class IndexViewModelTest extends TestCase
         $myView = new IndexViewModel($this->rcData);
         $myView->handle();
         $this->assertEquals($notSet, $myView->allocation);
-        $this->assertEquals(2, $myView->id);
         $this->assertEquals('Never', $myView->lastLogin);
         $this->assertEquals('CR-AAA-10001', $myView->randoNum);
         $this->assertEquals('1<sup>st</sup>', $myView->recruitNumber);

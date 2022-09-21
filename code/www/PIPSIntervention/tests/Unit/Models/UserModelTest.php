@@ -9,7 +9,6 @@ use Mockery;
 
 class UserModelTest extends TestCase
 {
-    use DatabaseMigrations;
     use RefreshDatabase;
 
     public function testgetUsersLastLoginAndFormatReturnsNeverWithANullLastLogin() {
