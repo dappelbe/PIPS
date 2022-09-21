@@ -104,25 +104,25 @@
                     <div class="row flex-grow-1">
                         <div class="col-3 mb-3 h-100">
                             <a href="{{route('where')}}">
-                                <button type="button" class="btn btn-primary mb-2 h-100">
+                                <button type="button" class="btn btn-primary mb-2 h-100" data-cy="where">
                                     <span style="font-size: 1.35rem" data-cy="c2-btn1">Where am I in my study journey?</span></button>
                             </a>
                         </div>
                         <div class="col-3 mb-3 h-100">
                             <a href="{{route('progress')}}">
-                                <button type="button" class="btn btn-secondary mb-2 h-100">
+                                <button type="button" class="btn btn-secondary mb-2 h-100" data-cy="progress">
                                     <span style="font-size: 1.35rem" data-cy="c2-btn2">The progress of the {{ $vm->studyName }} study</span></button>
                             </a>
                         </div>
                         <div class="col-3 mb-3 h-100">
                             <a href="{{route('due')}}">
-                                <button type="button" class="btn btn-success mb-2 h-100">
+                                <button type="button" class="btn btn-success mb-2 h-100"  data-cy="due">
                                     <span style="font-size: 1.35rem" data-cy="c2-btn3">What is due for me next?</span></button>
                             </a>
                         </div>
                         <div class="col-3 mb-3 h-100">
                             <a href="{{route('contact')}}">
-                                <button type="button" class="btn btn-info mb-2 h-100">
+                                <button type="button" class="btn btn-info mb-2 h-100"  data-cy="contact">
                                     <span style="font-size: 1.35rem" data-cy="c2-btn4">How do I contact the {{ $vm->studyName }} study team?</span></button>
                             </a>
                         </div>
@@ -151,9 +151,6 @@
                                 </div>
                                 <div class="card-body align-middle">
                                     <ul>
-                                        <!--<li>
-                                            <a href="" class="text-decoration-none">Consent form</a>
-                                        </li>-->
                                         <li>
                                             <a href="https://pips.octru.ox.ac.uk/patients.html" class="text-decoration-none" target="_blank">Patient Information Sheet</a>
                                         </li>
@@ -168,9 +165,6 @@
                                 </div>
                                 <div class="card-body align-middle">
                                     <ul>
-                                        <!--<li>
-                                            <a href="" class="text-decoration-none">Consent form</a>
-                                        </li>-->
                                         <li>
                                             <a href="https://crafft-info.digitrial.com/" class="text-decoration-none" target="_blank">Patient Information Sheet</a>
                                         </li>
