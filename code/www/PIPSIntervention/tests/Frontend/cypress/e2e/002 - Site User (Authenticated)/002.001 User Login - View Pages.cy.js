@@ -100,6 +100,47 @@ describe( '002.001 - User logs in, view pages', () => {
             cy.get('[data-cy=c3-pips-hdr]').should('contain.text','PIPS');
             cy.get('[data-cy=c3-study-hdr]').should('contain.text','CRAFFT');
         });
+        it('Login as test.user@Noidea.com, access the contact details page', () => {
+            //-- Arrange
+            cy.visit('/login');
+            cy.get('[data-cy=login-input-email]')
+                .clear()
+                .type('test.user@Noidea.com');
+            cy.get('[data-cy=login-input-password]')
+                .clear()
+                .type('MyPassword4PIPs');
+            //-- Act
+            cy.get('[data-cy=login-submit]').click();
+            cy.get('[data-cy=contact]').click();
+            //-- Assert
+            cy.url().should('eq', Cypress.config().baseUrl + '/contact');
+            cy.get('[data-cy=navlink-pips-home]').should('be.visible');
+            cy.get('#footer').should('be.visible');
+            cy.get('[data-cy=main_hdr]').should('be.visible');
+            cy.get('[data-cy=main_hdr]').should('contain.text','This is the personalised portal for Test User in the CRAFFT study');
+            cy.get('[data-cy=central-study-team]').should('be.visible');
+            cy.get('[data-cy=central-study-team]').should('contain.text','The contact details for the central CRAFFT trial team are');
+            cy.get('[data-cy=email-label]').should('be.visible');
+            cy.get('[data-cy=email-label]').should('contain.text',' E-Mail:');
+            cy.get('[data-cy=email-address]').should('be.visible');
+            cy.get('[data-cy=email-address]').should('contain.text','crafft@ndorms.ox.ac.uk');
+            cy.get('[data-cy=phone-label]').should('be.visible');
+            cy.get('[data-cy=phone-label]').should('contain.text',' Phone:');
+            cy.get('[data-cy=phone-number]').should('be.visible');
+            cy.get('[data-cy=phone-number]').should('contain.text','01865 228929');
+            cy.get('[data-cy=address-label]').should('be.visible');
+            cy.get('[data-cy=address-label]').should('contain.text',' Address:');
+            cy.get('[data-cy=address-text]').should('be.visible');
+            cy.get('[data-cy=address-text]').should('contain.text','Oxford Trauma\n' +
+                'Kadoorie Centre\n' +
+                'NDORMS\n' +
+                'University of Oxford\n' +
+                'John Radcliffe Hospital\n' +
+                'Headley Way\n' +
+                'Oxford OX3 9DU');
+            cy.get('[data-cy=back-button]').should('be.visible');
+            cy.get('[data-cy=back-button]').should('contain.text','Back');
+        });
         it('Tidy database', function() {
             cy.task('queryDb', 'DELETE FROM studydetails where id = 1;').then((result) => {
                 expect(result.affectedRows).to.equal(1)
