@@ -88,9 +88,9 @@
             @else
                 @canany(['user-list','role-list', 'consent-list', 'study-list'])
                 <div class="container">
-                    <div class="card">
+                    <div class="card" data-cy="admin-card">
                         <div class="card-body bg-light">
-                            <button class="btn btn-success">
+                            <button class="btn btn-success" data-cy="admin-home-button">
                                 <em class="fa-solid fa-home"></em>&#160;
                                 <a
                                     class="text-decoration-none text-white"
@@ -101,7 +101,7 @@
                             </button>
 
                             @can(['user-list'])
-                                <button class="btn btn-primary">
+                                <button class="btn btn-primary" data-cy="admin-users-button">
                                     <em class="fa-solid fa-users"></em>&#160;
                                     <a
                                         class="text-decoration-none text-white"
@@ -112,7 +112,7 @@
                                 </button>
                             @endcan
                             @can(['role-list'])
-                                <button class="btn btn-primary">
+                                <button class="btn btn-primary" data-cy="admin-roles-button">
                                     <em class="fa-solid fa-people-roof"></em>&#160;
                                     <a
                                         class="text-decoration-none text-white"
@@ -123,7 +123,7 @@
                                 </button>
                             @endcan
                             @can(['study-list'])
-                                <button class="btn btn-primary">
+                                <button class="btn btn-primary" data-cy="admin-study-button">
                                     <em class="fa-solid fa-building-columns"></em>&#160;
                                     <a
                                         class="text-decoration-none text-white"
@@ -134,7 +134,7 @@
                                 </button>
                             @endcan
                             @can(['consent-list'])
-                                <button class="btn btn-primary">
+                                <button class="btn btn-primary" data-cy="admin-consent-button">
                                     <em class="fa-solid fa-clipboard-check"></em>&#160;
                                     <a
                                         class="text-decoration-none text-white"
