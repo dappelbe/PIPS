@@ -15,7 +15,15 @@ module.exports = defineConfig({
             "user" : "myuser",
             "password" : "myuser",
             "database" : "default"
-        }
+        },
+          user: {
+              "email" : "test.user@Noidea.com",
+              "password" : "MyPassword4PIPs"
+          },
+          admin: {
+              "email" : "pips@ndorms.ox.ac.uk",
+              "password" : "MyPassword4PIPs"
+          }
       }
   },
 })
