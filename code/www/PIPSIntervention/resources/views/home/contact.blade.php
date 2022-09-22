@@ -6,12 +6,12 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>This is the personalised portal for {{ Auth::user()->name }} in the {{$studyName}} study</h3>
+                    <h3 data-cy="main_hdr">This is the personalised portal for {{ Auth::user()->name }} in the {{$studyName}} study</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="alert alert-success">
-                            <h4>The contact details for the central {{ $studyName }} trial team are</h4>
+                            <h4 data-cy="central-study-team">The contact details for the central {{ $studyName }} trial team are</h4>
                         </div>
                     </div>
 
@@ -24,10 +24,10 @@
                                             <em class="fa-solid fa-envelope-open-text fa-3x"></em>
                                         </div>
                                         <div class="col-9">
-                                            <h4 class="text-decoration-none" style="color: #F7E5A1">
+                                            <h4 class="text-decoration-none" style="color: #F7E5A1" data-cy="email-label">
                                                 E-Mail:
                                             </h4>
-                                            <a href="mailto:{{ $email }}" class="text-decoration-none" style="color: #F7E5A1">{{$email}}</a>
+                                            <a href="mailto:{{ $email }}" class="text-decoration-none" style="color: #F7E5A1" data-cy="email-address">{{$email}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -41,10 +41,10 @@
                                             <em class="fa-solid fa-phone fa-3x"></em>
                                         </div>
                                         <div class="col-9">
-                                            <h4 class="text-decoration-none" style="color: #F7E5A1">
+                                            <h4 class="text-decoration-none" style="color: #F7E5A1" data-cy="phone-label">
                                                 Phone:
                                             </h4>
-                                            {{$phone}}
+                                            <span data-cy="phone-number">{{$phone}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -58,10 +58,10 @@
                                             <em class="fa-regular fa-envelope fa-3x"></em>
                                         </div>
                                         <div class="col-9">
-                                            <h4 class="text-decoration-none" style="color: #4f805d">
+                                            <h4 class="text-decoration-none" style="color: #4f805d" data-cy="address-label">
                                                 Address:
                                             </h4>
-                                            {!! $address !!}
+                                            <span data-cy="address-text">{!! $address !!}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                         <div class="col-3">
                             <a href="{{route('home')}}">
                                 <button class="btn button-primary">
-                                    <em class="fa-solid fa-arrow-left"></em> Back
+                                    <em class="fa-solid fa-arrow-left"></em> <span data-cy="back-button">Back</span>
                                 </button>
                             </a>
                         </div>
