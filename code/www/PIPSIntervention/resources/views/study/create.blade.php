@@ -31,7 +31,7 @@
                             </div>
                         @endif
                         </div>
-                        {!! Form::open(array('route' => 'study.store','method'=>'POST')) !!}
+                        {!! Form::open(array('route' => 'study.store','method'=>'POST', 'enctype' => 'multipart/form-data')) !!}
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
@@ -66,7 +66,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Study PIS:</strong>
-                                    {!! Form::file('uploadedpis', array('class' => 'form-control')) !!}
+                                    {!! Form::file('uploadedpis[]', array('class' => 'form-control')) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
