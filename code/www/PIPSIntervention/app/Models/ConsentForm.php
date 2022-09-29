@@ -47,7 +47,8 @@ class ConsentForm extends Model
 {
     use HasFactory;
     protected $table = 'consentform';
-    protected $fillable = array('pis', 'voluntary', 'data', 'agree', 'name', 'consentdate', 'ppt_signature');
+    protected $fillable = array('pis', 'voluntary', 'data', 'agree', 'name', 'consentdate',
+        'ppt_signature', 'study_id','record_id');
 
     /***
      * Get a list of all data in the table
