@@ -41,7 +41,7 @@
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $study->studyname }}</td>
                                     <td>{{ $study->studyemail }}</td>
-                                    <td><img src="images/{{ $study->studylogo }}" class="img-fluid" height="1.5em" alt="{{ $study->studyname }} Logo"/></td>
+                                    <td><img src="images/{{ $study->studylogo }}" class="img-fluid" width="100px" alt="{{ $study->studyname }} Logo"/></td>
                                     <td>{!!$study->getPISFilesAsHTMLList('pis') !!}</td>
                                     <td>
                                         <a class="btn btn-info" href="{{ route('study.show',$study->id) }}">Show</a>
