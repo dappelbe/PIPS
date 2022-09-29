@@ -29,9 +29,6 @@
                 <a class="navbar-brand" href="{{ url('/') }}" data-cy="navlink-pips-home">
                     <img src="{{asset('images/pips-logo.png')}}" alt="PIPS Logo" class="img-thumbnail" style="height: 2em;"/>
                 </a>
-                <a class="navbar-brand" href="https://translate.octru.ox.ac.uk/" target="_blank" data-cy="navlink-translate-logo">
-                    <img src="{{asset('images/translate-logo.png')}}" alt="TRANSLATE Logo" class="img-thumbnail" style="height: 2em;"/>
-                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
