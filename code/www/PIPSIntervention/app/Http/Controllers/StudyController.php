@@ -86,7 +86,6 @@ class StudyController extends Controller
 
             }
         }
-        $input['uploadedpis'] = 1;
         $study = Study::create($input);
 
         return redirect()->route('study.index')
