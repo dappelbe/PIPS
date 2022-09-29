@@ -35,6 +35,12 @@
                         {!! Form::open(array('route' => 'study.store',
                                              'method'=>'POST',
                                              'enctype' => 'multipart/form-data')) !!}
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                <div class="alert-danger">
+                                    By submitting this form you will overwrite all existing settings.
+                                </div>
+                            </div>
+
                         @endif
                         {!! Form::hidden('id', $data->id) !!}
                         <div class="row">
@@ -224,12 +230,20 @@
                                 </div>
                             </div>
                             @if( $readonly != 'readonly' )
-                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                &#160;
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                    &#160;
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                    <div class="alert-danger">
+                                        By submitting this form you will overwrite all existing settings.
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                    &#160;
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             @endif
                         </div>
                         @if( $readonly != 'readonly' )
