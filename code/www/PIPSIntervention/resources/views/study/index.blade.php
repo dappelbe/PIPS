@@ -24,6 +24,7 @@
                             </div>
                         @endif
                         <table class="table table-bordered table-striped" id="listtable">
+                            <caption>List of studies associated with the system.</caption>
                             <thead>
                             <tr>
                                 <th>No</th>
@@ -38,10 +39,10 @@
                             @foreach ($data as $key => $study)
                                 <tr>
                                     <td>{{ ++$i }}</td>
-                                    <td>{{ $study->name }}</td>
+                                    <td>{{ $study->studyname }}</td>
                                     <td>{{ $study->studyemail }}</td>
-                                    <td>{{ $study->studylogo }}</td>
-                                    <td>{{ $study->uploadedpis }}</td>
+                                    <td><img src="images/{{ $study->studylogo }}" class="img-fluid" height="1.5em" alt="{{ $study->studyname }} Logo"/></td>
+                                    <td>{!!$study->getPISFilesAsHTMLList('pis') !!}</td>
                                     <td>
                                         <a class="btn btn-info" href="{{ route('study.show',$study->id) }}">Show</a>
                                         <a class="btn btn-primary" href="{{ route('study.edit',$study->id) }}">Edit</a>
