@@ -63,4 +63,26 @@ class Study extends Model
         'randonumfield', 'allocationfield', 'studystatusreportid', 'studyaddress',
         'sitenamefield', 'studyaccruallink', 'expectedrecruits', 'randodatefield'
         );
+
+    /***
+     * Function to format the list of PIS for a given study as an HTML list.
+     *
+     * @param string $publicFolderName => the name of the public folder containing the PIS files.
+     * @return string
+     */
+    public function getPISFilesAsHTMLList(string $publicFolderName) {
+        $retVal = "<ul>";
+        if (!empty($this->uploadedpis)) {
+            $files = explode('|', $this->uploadedpis);
+            foreach ($files as $file) {
+                $newFile = trim($file);
+                if (strlen($newFile) > 0) {
+                    $retVal .= sprintf("<li><a href=\"%s/%s\" target=\"_blank\">%s</a></li>", $publicFolderName, $newFile, $newFile);
+                }
+            }
+        }
+        $retVal .= "</ul>";
+        return $retVal;
+    }
+
 }
