@@ -41,12 +41,14 @@
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $study->studyname }}</td>
                                     <td>{{ $study->studyemail }}</td>
-                                    <td><img src="images/{{ $study->studylogo }}" class="img-fluid" width="100px" alt="{{ $study->studyname }} Logo"/></td>
+                                    <td><img src="images/{{ $study->studylogo }}" class="img-fluid"
+                                             width="100px" alt="{{ $study->studyname }} Logo"/></td>
                                     <td>{!!$study->getPISFilesAsHTMLList('pis') !!}</td>
                                     <td>
                                         <a class="btn btn-info" href="{{ route('study.show',$study->id) }}">Show</a>
                                         <a class="btn btn-primary" href="{{ route('study.edit',$study->id) }}">Edit</a>
-                                        {!! Form::open(['method' => 'DELETE','route' => ['study.destroy', $study->id],'style'=>'display:inline']) !!}
+                                        {!! Form::open(['method' => 'DELETE',
+                                            'route' => ['study.destroy', $study->id],'style'=>'display:inline']) !!}
                                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                         {!! Form::close() !!}
                                     </td>
