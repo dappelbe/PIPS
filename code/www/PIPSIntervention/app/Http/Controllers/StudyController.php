@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Study;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Spatie\Permission\Models\Role;
 
 class StudyController extends Controller
 {
@@ -59,10 +58,10 @@ class StudyController extends Controller
 
         $files = $request->file('studylogo');
         if ( !empty($files)) {
-            $name = $files[0]->getClientOriginalName();
+            $name = $files->getClientOriginalName();
             $input['studylogo'] = $name;
             try {
-                Storage::put('public/images/' . $name, file_get_contents($files[0]));
+                $files->move('images',$files->getClientOriginalName());
             } catch (\Exception $e) {
                 Log::error($e->getMessage());
             }
@@ -80,7 +79,7 @@ class StudyController extends Controller
                     $input['uploadedpis'] .= '|' . $name;
                 }
                 try {
-                    Storage::put('public/pis/' . $name, file_get_contents($myfile));
+                    $myfile->move('pis',$myfile->getClientOriginalName());
                 } catch (\Exception $e) {
                     Log::error($e->getMessage());
                 }
