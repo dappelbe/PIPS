@@ -54,7 +54,8 @@ class ConsentForm extends Model
      * Get a list of all data in the table
      * @return array
      */
-   public static function List() : array {
+   public static function List() : array
+   {
        return DB::table('consentform')->get()->toArray();
    }
 
