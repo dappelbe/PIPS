@@ -81,6 +81,7 @@ class StudyController extends Controller
             'studyaccruallink' => 'required',
             'expectedrecruits' => 'required',
             'randodatefield' => 'required',
+            'potentialrecruitsreport' => 'required',
         ]);
 
         $input = $request->all();

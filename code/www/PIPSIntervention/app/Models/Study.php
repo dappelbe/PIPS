@@ -61,7 +61,7 @@ class Study extends Model
     protected $fillable = array('studyname', 'apiurl', 'apikey', 'studylogo',
         'studyemail', 'studyphone', 'uploadedpis', 'studyrandomisationreportid',
         'randonumfield', 'allocationfield', 'studystatusreportid', 'studyaddress',
-        'sitenamefield', 'studyaccruallink', 'expectedrecruits', 'randodatefield'
+        'sitenamefield', 'studyaccruallink', 'expectedrecruits', 'randodatefield', 'potentialrecruitsreport'
         );
 
     /***

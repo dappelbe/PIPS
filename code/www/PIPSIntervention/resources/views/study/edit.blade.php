@@ -229,6 +229,18 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Potential recruits report ID:</strong>
+                                    @if( $readonly == '' )
+                                    {!! Form::text('potentialrecruitsreport', $data->potentialrecruitsreport,
+                                        array('placeholder' => 'Report ID','class' => 'form-control')) !!}
+                                    @else
+                                        {{$data->potentialrecruitsreport}}
+                                    @endif
+                                </div>
+                            </div>
+
                             @if( $readonly != 'readonly' )
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                     &#160;
