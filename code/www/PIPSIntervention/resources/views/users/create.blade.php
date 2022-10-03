@@ -63,6 +63,18 @@
                                     {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
                                 </div>
                             </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Study Randomisation Number:</strong>
+                                    {!! Form::text('randomisation_number', null, array('placeholder' => 'Randomisation Number','class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Study ID</strong>
+                                    {!! Form::text('studyid', null, array('placeholder' => 'studyid','class' => 'form-control')) !!}
+                                </div>
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>

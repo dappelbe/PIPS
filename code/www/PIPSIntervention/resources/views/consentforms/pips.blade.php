@@ -38,6 +38,8 @@
                         <div class="row">
                             <form id="consent_form" data-cy="consent-form" action="{{route('consentforms.pips.store')}}" method="post" class="needs-validation" novalidate>
                                 {{ csrf_field() }}
+                                <input type="hidden" name="record_id" value="not set"/>
+                                <input type="hidden" name="study_id" value="-1"/>
                                 <div class="form-group row ">
                                     <label class="col-sm-9 col-form-label" data-cy="q1">
                                         1.   I confirm that I have read the information sheet dated 15Dec2021 (version 0.1)

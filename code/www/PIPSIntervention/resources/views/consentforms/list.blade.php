@@ -29,6 +29,7 @@
                                         <tr>
                                             <th>Action</th>
                                             <th>Last Updated</th>
+                                            <th>Study</th>
                                             <th>Record</th>
                                             <th>Date of Consent</th>
                                             <th>Name</th>
@@ -37,8 +38,6 @@
                                             <th>Data</th>
                                             <th>Agree</th>
                                             <th>Consent Taken By</th>
-                                            <th>Study</th>
-                                            <th>Randomisation Number</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,9 +50,11 @@
                                                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                                         {!! Form::close() !!}
                                                     @else
+                                                        <a class="btn btn-primary" href="{{ route('users.create') }}">Create user account</a>
                                                     @endif
                                                 </td>
                                                 <td>{{$row->updated_at}}</td>
+                                                <td>{{$row->study_id}}</td>
                                                 <td>{{$row->record_id}}</td>
                                                 <td>{{$row->created_at}}</td>
                                                 <td>{{$row->name}}</td>
@@ -85,8 +86,6 @@
                                                     @endif
                                                 </td>
                                                 <td>{{$row->takenby}}</td>
-                                                <td>{{$row->study_id}}</td>
-                                                <td>{{$row->record_id}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

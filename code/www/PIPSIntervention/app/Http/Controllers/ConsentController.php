@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ConsentForm;
+use App\Models\Study;
+use App\Utilities\RetrieveREDCapData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class ConsentController extends Controller
 {
 
-    function __construct()
+    public function __construct()
     {
         $this->middleware('auth', ['except' => ['pips', 'store']]);
         $this->middleware('permission:consent-list|consent-create|consent-edit|consent-delete', ['only' => ['list']]);
@@ -40,6 +42,9 @@ class ConsentController extends Controller
         $row->created_at = date("Y-m-d H:i:s");
         $row->updated_at = date("Y-m-d H:i:s");
 
+        $row->study_id = $request['study_id'];
+        $row->record_id = $request['record_id'];
+
         $row->takenby = '';
         $row->checkdate = '1900-01-01 00:01:00';
         $row->research_sig = '';
@@ -53,6 +58,8 @@ class ConsentController extends Controller
 
     public function list() {
         $pageTitle = "PIPs: Consent Form Status";
+        $rcData = new RetrieveREDCapData();
+//        $vm = new IndexViewModel($rcData);
         $data = ConsentForm::List();
         return view('consentforms.list')
             ->with('data', $data)
@@ -70,7 +77,10 @@ class ConsentController extends Controller
     {
         $cf = ConsentForm::find($id);
 
+        $studies = Study::all()->toArray();
+
         return view('consentforms.edit')
+            ->with('studies', $studies)
             ->with('row', $cf);
     }
 
@@ -80,6 +90,8 @@ class ConsentController extends Controller
         $cf = ConsentForm::find($id);
         $cf->takenby = Auth::user()->name;
         $cf->research_sig = request()->ip();
+        $cf->study_id = $request['study_id'];
+        $cf->record_id = $request['record_id'];
         $cf->save();
 
         return redirect()->route('consentforms.pips.list')

@@ -110,9 +110,31 @@
                                                value="{{$row->consentdate}}"  data-cy="consentdate" readonly>
                                     </div>
                                 </div>
-                                <div class="form-group row ">
-                                    &#160;
+                            <div class="form-group row ">
+                                &#160;
+                            </div>
+                            <div class="form-group row ">
+                                <div class="col-sm-2">
+                                    Participant's Study
                                 </div>
+                                <div class="col-sm-2">
+                                    <select name="study_id" class="form-control">
+                                        <option value="">Please Select</option>
+                                        @foreach($studies as $study)
+                                            <option value="{{$study['id']}}">{{$study['studyname']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    Participant's Randomisation Number
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" name="record_id" />
+                                </div>
+                            </div>
+                            <div class="form-group row ">
+                                &#160;
+                            </div>
                                 <div class="form-group row ">
                                     <div class="col-12">
                                         <input type="submit" class="form-control bg-success text-bold text-white"
