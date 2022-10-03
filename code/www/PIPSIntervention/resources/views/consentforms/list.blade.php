@@ -24,10 +24,12 @@
                             @endif
                             <div class="col-12">
                                 <table id="listtable" class="table table-striped col-12">
+                                    <caption>List of participants to consent</caption>
                                     <thead>
                                         <tr>
                                             <th>Action</th>
                                             <th>Last Updated</th>
+                                            <th>Record</th>
                                             <th>Date of Consent</th>
                                             <th>Name</th>
                                             <th>PIS</th>
@@ -35,6 +37,8 @@
                                             <th>Data</th>
                                             <th>Agree</th>
                                             <th>Consent Taken By</th>
+                                            <th>Study</th>
+                                            <th>Randomisation Number</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -50,6 +54,7 @@
                                                     @endif
                                                 </td>
                                                 <td>{{$row->updated_at}}</td>
+                                                <td>{{$row->record_id}}</td>
                                                 <td>{{$row->created_at}}</td>
                                                 <td>{{$row->name}}</td>
                                                 <td>
@@ -80,6 +85,8 @@
                                                     @endif
                                                 </td>
                                                 <td>{{$row->takenby}}</td>
+                                                <td>{{$row->study_id}}</td>
+                                                <td>{{$row->record_id}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
