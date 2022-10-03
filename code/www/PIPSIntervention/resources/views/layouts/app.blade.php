@@ -26,7 +26,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}" data-cy="navlink-pips-home">
+                <a class="navbar-brand" href="{{ url('/home') }}" data-cy="navlink-pips-home">
                     <img src="{{asset('images/pips-logo.png')}}" alt="PIPS Logo" class="img-thumbnail" style="height: 2em;"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

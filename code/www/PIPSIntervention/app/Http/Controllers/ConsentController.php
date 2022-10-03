@@ -84,6 +84,17 @@ class ConsentController extends Controller
             ->with('row', $cf);
     }
 
+    public function view($id)
+    {
+        $cf = ConsentForm::find($id);
+
+        $studies = Study::all()->toArray();
+
+        return view('consentforms.view')
+            ->with('studies', $studies)
+            ->with('row', $cf);
+    }
+
     public function update(Request $request, $id)
     {
 

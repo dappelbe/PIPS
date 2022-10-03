@@ -32,6 +32,7 @@ Route::get('/consent/list', [App\Http\Controllers\ConsentController::class, 'lis
 Route::get('/consent/{consentform}', [App\Http\Controllers\ConsentController::class, 'edit'])->name('consentforms.pips.edit');
 Route::delete('/consent/PIPS/{consentform}', [App\Http\Controllers\ConsentController::class, 'destroy'])->name('consentforms.destroy');
 Route::patch('/consent/PIPS/{consentform}', [App\Http\Controllers\ConsentController::class, 'update'])->name('consentforms.update');
+Route::get('/consent/PIPS/{consentform}', [App\Http\Controllers\ConsentController::class, 'view'])->name('consentforms.view');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);

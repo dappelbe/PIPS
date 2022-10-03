@@ -154,6 +154,11 @@
                                         <li>
                                             <a href="https://pips.octru.ox.ac.uk/patients.html" class="text-decoration-none" target="_blank">Patient Information Sheet</a>
                                         </li>
+                                        @if ( !str_contains($vm->consentFormLink, 'Not set'))
+                                        <li>
+                                            <a href="{{$vm->consentFormLink}}" class="text-decoration-none" target="_blank">PIPS Consent Form</a>
+                                        </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>

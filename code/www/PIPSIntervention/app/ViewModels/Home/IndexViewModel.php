@@ -2,6 +2,7 @@
 
 namespace App\ViewModels\Home;
 
+use App\Models\ConsentForm;
 use App\Models\Study;
 use App\Models\User;
 use App\Utilities\IRetrieveREDCapData;
@@ -22,6 +23,8 @@ class IndexViewModel
     public string $studyEmail;
     public string $studyName;
     public string $pis;
+    public string $consentFormLink;
+
     public IRetrieveREDCapData $redcapProject;
     public User|null $user = null;
 
@@ -36,6 +39,7 @@ class IndexViewModel
         $this->studyEmail = $this->notSet;
         $this->studyName = $this->notSet;
         $this->pis = $this->notSet;
+        $this->consentFormLink = $this->notSet;
         $this->user = (new User())->find($this->id);
     }
 
@@ -65,6 +69,13 @@ class IndexViewModel
             }
             $this->recruitNumber = Util::AddHTMLSuperscriptOrdinal($ctr);
             $this->pis = $study->getPISFilesAsHTMLList('pis');
+
+            $allConsentForms = ConsentForm::all()->toArray();
+            $myConsentForm = Util::filterArrayByValue( $allConsentForms, 'record_id', $this->randoNum);
+            if ( count($myConsentForm) > 0 ) {
+                $this->consentFormLink = route( 'consentforms.view', $myConsentForm[0]['id']);
+            }
+
         }
     }
 
