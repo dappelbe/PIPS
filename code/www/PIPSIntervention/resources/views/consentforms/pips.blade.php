@@ -42,9 +42,9 @@
                                 <input type="hidden" name="study_id" value="-1"/>
                                 <div class="form-group row ">
                                     <label class="col-sm-9 col-form-label" data-cy="q1">
-                                        1.   I confirm that I have read the information sheet dated 15Dec2021 (version 0.1)
-                                        for this study. I have had the opportunity to consider the information,
-                                        ask questions and have had these answered satisfactorily.
+                                        1.	I confirm that I have read the information sheet dated 18Aug2022
+                                        (version 1.0) for this study. I have had the opportunity to consider the
+                                        information, ask questions and have had these answered satisfactorily.
                                     </label>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row ">
-                                    <label class="col-sm-9 col-form-label" data-cy="q2">2.   I understand that my participation is voluntary and that I am free to withdraw at any time without giving any reason, without my medical care or legal rights being affected.</label>
+                                    <label class="col-sm-9 col-form-label" data-cy="q2">2.	I understand that my participation is voluntary and that I am free to withdraw at any time without giving any reason, without my medical care or legal rights being affected.</label>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="voluntary" id="voluntary_yes" value="1" data-cy="voluntary-yes"  required/>
@@ -72,9 +72,7 @@
                                 </div>
                                 <div class="form-group row ">
                                     <label class="col-sm-9 col-form-label" data-cy="q3">
-                                        3.   I understand that data collected during the study may be looked at by
-                                        individuals from University of Oxford where it is relevant to my taking part in
-                                        this research. I give permission for these individuals to have access to my records.
+                                        3.	I understand that data collected during the study may be looked at by individuals from University of Oxford where it is relevant to my taking part in this research. I give permission for these individuals to have access to my records.
                                     </label>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
