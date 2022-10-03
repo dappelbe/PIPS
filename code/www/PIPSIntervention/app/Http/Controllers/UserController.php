@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Mail\WelcomeMail;
+use App\Models\ConsentForm;
+use App\Utilities\Util;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
@@ -68,6 +72,19 @@ class UserController extends Controller
 
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
+        $input['path'] = public_path('PIPS(IMPROVE)_PIS_V1.0_18Aug2022.pdf');
+        $allConsentForms = ConsentForm::all()->toArray();
+        $myConsentForm = Util::filterArrayByValue( $allConsentForms, 'record_id', $input['randomisation_number']);
+        if ( count($myConsentForm) > 0 ) {
+            $row = $myConsentForm[0];
+            $pdf = app('dompdf.wrapper');
+            $pdf->loadView('consentforms.pdf', compact('row'))->setOptions(['defaultFont' => 'sans-serif']);
+            $path = $myConsentForm[0]['record_id'] . '_consent_form.pdf';
+            $pdf->save($path);
+            $input['path'] = $path;
+        }
+
+        \Mail::to($input['email'])->send(new WelcomeMail($input));
 
         return redirect()->route($this->primaryView)
             ->with('success','User created successfully');
