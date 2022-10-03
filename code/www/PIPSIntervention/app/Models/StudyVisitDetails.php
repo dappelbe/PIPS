@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-class StudyVisitDetails
+use Illuminate\Database\Eloquent\Model;
+
+class StudyVisitDetails extends Model
 {
     protected $table = 'study_visit_details';
 

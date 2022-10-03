@@ -21,6 +21,7 @@ class IndexViewModel
     public string $siteName;
     public string $studyEmail;
     public string $studyName;
+    public string $pis;
     public IRetrieveREDCapData $redcapProject;
     public User|null $user = null;
 
@@ -34,6 +35,7 @@ class IndexViewModel
         $this->siteName = $this->notSet;
         $this->studyEmail = $this->notSet;
         $this->studyName = $this->notSet;
+        $this->pis = $this->notSet;
         $this->user = (new User())->find($this->id);
     }
 
@@ -62,6 +64,7 @@ class IndexViewModel
                 }
             }
             $this->recruitNumber = Util::AddHTMLSuperscriptOrdinal($ctr);
+            $this->pis = $study->getPISFilesAsHTMLList('pis');
         }
     }
 
