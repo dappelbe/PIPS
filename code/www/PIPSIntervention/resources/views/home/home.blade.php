@@ -152,7 +152,7 @@
                                 <div class="card-body align-middle">
                                     <ul>
                                         <li>
-                                            <a href="https://pips.octru.ox.ac.uk/patients.html" class="text-decoration-none" target="_blank">Patient Information Sheet</a>
+                                            <a href="{{asset('PIPS(IMPROVE)_PIS_V1.0_18Aug2022.pdf')}}" class="text-decoration-none" target="_blank">Patient Information Sheet</a>
                                         </li>
                                         @if ( !str_contains($vm->consentFormLink, 'Not set'))
                                         <li>
