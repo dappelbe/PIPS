@@ -63,7 +63,7 @@
                                             <em class="fa-solid fa-syringe fa-2x text-white"></em>
                                         </div>
                                         <div class="col-9">
-                                            <h4 class="" style="color: #F7E5A1" data-cy="c1-b3-hdr">You were allocated to the {{$vm->allocation}} arm.</h4>
+                                            <h4 class="" style="color: #F7E5A1" data-cy="c1-b3-hdr">You were allocated to the {!! $vm->allocation !!} arm.</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -164,11 +164,7 @@
                                     {{ $vm->studyName }}
                                 </div>
                                 <div class="card-body align-middle">
-                                    <ul>
-                                        <li>
-                                            <a href="https://crafft-info.digitrial.com/" class="text-decoration-none" target="_blank">Patient Information Sheet</a>
-                                        </li>
-                                    </ul>
+                                    {!! $vm->pis !!}
                                 </div>
                             </div>
                         </div>

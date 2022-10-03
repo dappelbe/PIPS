@@ -22,7 +22,7 @@
                                         <i class="fa-solid fa-calendar-days fa-3x"></i>
                                     </div>
                                     <div class="col-8">
-                                        <h5>Your next visit is the <strong>6 Month Visit</strong></h5>
+                                        <h5>{!! $next !!}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                                         <i class="fa-solid fa-clock fa-3x"></i>
                                     </div>
                                     <div class="col-8">
-                                        <h5>We will send you a reminder in <strong>Two Months</strong></h5>
+                                        <h5>We will send you a reminder in <strong>{!! $reminder !!}</strong></h5>
                                     </div>
                                 </div>
                             </div>
