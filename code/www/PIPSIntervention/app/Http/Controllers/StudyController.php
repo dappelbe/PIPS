@@ -122,7 +122,7 @@ class StudyController extends Controller
             }
         }
 
-        if ($input['id'] != '') {
+        if (array_key_exists('id', $input) && $input['id'] != '') {
             $study = Study::findorfail($input['id']);
             $study->update($input);
         } else {
