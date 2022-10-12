@@ -30,6 +30,7 @@ Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])-
 
 Route::get('/consent/list', [App\Http\Controllers\ConsentController::class, 'list'])->name('consentforms.pips.list');
 Route::get('/consent/{consentform}', [App\Http\Controllers\ConsentController::class, 'edit'])->name('consentforms.pips.edit');
+Route::get('/consent/createAccount/{consentform}', [App\Http\Controllers\ConsentController::class, 'createaccount'])->name('consentforms.create');
 Route::delete('/consent/PIPS/{consentform}', [App\Http\Controllers\ConsentController::class, 'destroy'])->name('consentforms.destroy');
 Route::patch('/consent/PIPS/{consentform}', [App\Http\Controllers\ConsentController::class, 'update'])->name('consentforms.update');
 Route::get('/consent/PIPS/{consentform}', [App\Http\Controllers\ConsentController::class, 'view'])->name('consentforms.view');
