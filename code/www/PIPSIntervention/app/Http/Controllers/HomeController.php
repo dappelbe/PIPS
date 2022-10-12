@@ -60,6 +60,7 @@ class HomeController extends Controller
         $pageTitle = 'Where am I in my study journey';
         $studyName = "Not Set";
         $randoDate = date('Y-m-d');
+        ActivityTable::StoreMyActivity($pageTitle, 'Accessed');
         $id = Auth::id();
         $user = User::find($id);
         if ( isset($user->studyid) && $user->studyid > 0 ) {
@@ -152,6 +153,7 @@ class HomeController extends Controller
         $studyName = "Not set";
         $recruitNumber = "Not set";
         $expected = "683";
+        ActivityTable::StoreMyActivity($pageTitle, 'Accessed');
 
         $id = Auth::id();
         $user = User::find($id);
@@ -210,6 +212,7 @@ class HomeController extends Controller
         $records = array();
         $next = 'Your next visit is the <strong>unknown</strong>';
         $reminder = 'Unknown';
+        ActivityTable::StoreMyActivity($pageTitle, 'Accessed');
 
         $id = Auth::id();
         $user = User::find($id);
@@ -280,6 +283,8 @@ class HomeController extends Controller
 
         $id = Auth::id();
         $user = User::find($id);
+        ActivityTable::StoreMyActivity("Contact Page", 'Accessed');
+
         if ( isset($user->studyid) && $user->studyid > 0 ) {
             $study = Study::find($user->studyid);
             if (isset($study)) {
