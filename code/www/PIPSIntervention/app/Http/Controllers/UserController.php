@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Mail\WelcomeMail;
 use App\Models\ConsentForm;
 use App\Utilities\Util;
-use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
@@ -77,8 +77,11 @@ class UserController extends Controller
         $myConsentForm = Util::filterArrayByValue( $allConsentForms, 'record_id', $input['randomisation_number']);
         if ( count($myConsentForm) > 0 ) {
             $row = $myConsentForm[0];
-            $pdf = app('dompdf.wrapper');
-            $pdf->loadView('consentforms.pdf', compact('row'))->setOptions(['defaultFont' => 'sans-serif']);
+
+            $pdf = Pdf::loadView('consentforms.pdf', compact('row'))
+                    ->setPaper('A4', 'portrait')
+                    ->setOption('isRemoteEnabled', TRUE);
+
             $path = $myConsentForm[0]['record_id'] . '_consent_form.pdf';
             $pdf->save($path);
             $input['path'] = $path;
