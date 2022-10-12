@@ -50,7 +50,9 @@
                                                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                                         {!! Form::close() !!}
                                                     @else
-                                                        <a class="btn btn-primary" href="{{ route('users.create') }}">Create user account</a>
+                                                        @if ( !in_array($row->record_id, $hasAccounts) )
+                                                            <a class="btn btn-primary" href="{{ route('consentforms.create', ['consentform' => $row->id]) }}">Create user account</a>
+                                                        @endif
                                                     @endif
                                                 </td>
                                                 <td>{{$row->updated_at}}</td>
