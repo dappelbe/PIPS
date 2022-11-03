@@ -80,6 +80,12 @@ class IndexViewModel
                 $this->lastLogin = date('l d F Y', strtotime($this->user->last_login_at)) . ' at ' .
                     date('H:i', strtotime($this->user->last_login_at));
             }
+            $fName = $this->randoNum . "_consent_form.pdf";
+            if ( \File::exists(public_path($fName)) )
+            {
+                $this->consentFormLink = $fName;
+            }
+
 
         }
     }
