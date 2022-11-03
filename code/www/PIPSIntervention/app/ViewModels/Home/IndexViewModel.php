@@ -2,6 +2,7 @@
 
 namespace App\ViewModels\Home;
 
+use App\Models\ActivityTable;
 use App\Models\ConsentForm;
 use App\Models\Study;
 use App\Models\User;
@@ -77,8 +78,16 @@ class IndexViewModel
             }
 
             if ( !is_null($this->user->last_login_at ) ) {
-                $this->lastLogin = date('l d F Y', strtotime($this->user->last_login_at)) . ' at ' .
-                    date('H:i', strtotime($this->user->last_login_at));
+                $lastActivity = ActivityTable::where([
+                    ['user_id','=',$this->user->id],
+                    ['activity','=','PIPs: Dashboard'],
+                ])->latest('updated_at');
+
+                if ( !is_null($lastActivity))
+                {
+                    $this->lastLogin = date('l d F Y', strtotime($lastActivity)) . ' at ' .
+                        date('H:i', strtotime($lastActivity));
+                }
             }
             $fName = $this->randoNum . "_consent_form.pdf";
             if ( \File::exists(public_path($fName)) )

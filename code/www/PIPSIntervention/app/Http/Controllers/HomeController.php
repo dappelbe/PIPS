@@ -49,8 +49,8 @@ class HomeController extends Controller
     {
         $rcData = new RetrieveREDCapData();
         $vm = new IndexViewModel($rcData);
-        ActivityTable::StoreMyActivity($vm->pageTitle, 'Loading');
         $vm->handle();
+        ActivityTable::StoreMyActivity($vm->pageTitle, 'Loading');
         return view('home.home')
             ->with('vm', $vm)
             ->with('pageTitle', $vm->pageTitle);
