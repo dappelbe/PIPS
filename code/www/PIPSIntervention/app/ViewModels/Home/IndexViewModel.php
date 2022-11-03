@@ -76,6 +76,11 @@ class IndexViewModel
                 $this->consentFormLink = route( 'consentforms.view', $myConsentForm[0]['id']);
             }
 
+            if ( !is_null($this->user->last_login_at ) ) {
+                $this->lastLogin = date('l d F Y', strtotime($this->user->last_login_at)) . ' at ' .
+                    date('H:i', strtotime($this->user->last_login_at));
+            }
+
         }
     }
 
