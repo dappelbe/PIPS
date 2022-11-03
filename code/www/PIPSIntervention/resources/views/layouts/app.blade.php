@@ -29,6 +29,9 @@
                 <a class="navbar-brand" href="{{ url('/home') }}" data-cy="navlink-pips-home">
                     <img src="{{asset('images/pips-logo.png')}}" alt="PIPS Logo" class="img-thumbnail" style="height: 2em;"/>
                 </a>
+                @auth
+                <img src="{{asset('images/improve.png')}}" alt="PIPS Logo" class="img-thumbnail" style="height: 2em;"/>
+                @endauth
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
