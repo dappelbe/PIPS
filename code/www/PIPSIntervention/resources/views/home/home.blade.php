@@ -35,7 +35,7 @@
                                     <span class="h3" style="color: yellow;" data-cy="c1-b1">{{ $vm->randoNum }}</span>
                                     <br/>
                                     <br/>
-                                    <h5 class="" style="color: #F7E5A1" data-cy="c1-b1-h3">Your {{ $vm->studyName }} trial number</h5>
+                                    <h5 class="" style="color: #F7E5A1" data-cy="c1-b1-h3">Your {{ $vm->studyName }} study number</h5>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="col-9">
                                             <h4 class="" style="color: #F7E5A1" data-cy="c1-b4-hdr">
-                                                You are the {!! $vm->recruitNumber !!} participant who has agreed to take part in the {{$vm->studyName}} trial.
+                                                You are the {!! $vm->recruitNumber !!} participant who has agreed to take part in the {{$vm->studyName}} study.
                                             </h4>
                                         </div>
                                     </div>
