@@ -17,7 +17,7 @@
                     <div class="row flex-grow-1">
                         <div class="col-12">
                             <p class="h4">
-                                The {{ $studyName }} trial needs to recruit {{ $expected }} participants, you were the {!! $recruitNumber !!} participant.
+                                The {{ $studyName }} study needs to recruit {{ $expected }} participants, you were the {!! $recruitNumber !!} participant.
                             </p>
                             <iframe loading="lazy" src="{{ $recruitlink }}" width="100%" height="500px" ></iframe>
                         </div>
