@@ -81,12 +81,12 @@ class IndexViewModel
                 $lastActivity = ActivityTable::where([
                     ['user_id','=',$this->user->id],
                     ['activity','=','PIPs: Dashboard'],
-                ])->latest('updated_at');
+                ])->latest('updated_at')->get()->toArray();
 
-                if ( !is_null($lastActivity))
+                if ( count($lastActivity) > 0 )
                 {
-                    $this->lastLogin = date('l d F Y', strtotime($lastActivity)) . ' at ' .
-                        date('H:i', strtotime($lastActivity));
+                    $this->lastLogin = date('l d F Y', strtotime($lastActivity[0]['updated_at'])) . ' at ' .
+                        date('H:i', strtotime($lastActivity[0]['updated_at']));
                 }
             }
             $fName = $this->randoNum . "_consent_form.pdf";
