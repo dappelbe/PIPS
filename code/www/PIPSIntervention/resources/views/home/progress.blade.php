@@ -19,7 +19,7 @@
                             <p class="h4">
                                 The {{ $studyName }} trial needs to recruit {{ $expected }} participants, you were the {!! $recruitNumber !!} participant.
                             </p>
-                            <iframe loading="lazy" src="https://kadoorie.octru.ox.ac.uk/CRAFFT_SIMS/Recruitment" width="100%" height="500px" ></iframe>
+                            <iframe loading="lazy" src="{{ $recruitlink }}" width="100%" height="500px" ></iframe>
                         </div>
                     </div>
                     <div class="row">

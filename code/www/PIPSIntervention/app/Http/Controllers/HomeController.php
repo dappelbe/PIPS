@@ -163,6 +163,7 @@ class HomeController extends Controller
                 $studyName = $study->studyname;
                 $randoNum = $user->randomisation_number;
                 $expected = $study->expectedrecruits;
+                $recruitlink = $study->studyaccruallink;
                 try {
                     $rc = new RedCapProject($study->apiurl, $study->apikey);
                     $records = $rc->exportReports($study->studyrandomisationreportid, 'php', 'label');
@@ -200,6 +201,7 @@ class HomeController extends Controller
         return view('home.progress')
             ->with('studyName', $studyName)
             ->with('recruitNumber', $recruitNumber)
+            ->with('recruitlink', $recruitlink)
             ->with('expected', $expected)
             ->with('pageTitle', $pageTitle);
     }
