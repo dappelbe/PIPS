@@ -82,6 +82,8 @@ class StudyController extends Controller
             'expectedrecruits' => 'required',
             'randodatefield' => 'required',
             'potentialrecruitsreport' => 'required',
+            'consent_event' => 'required',
+            'consent_instrument' => 'required',
         ]);
 
         $input = $request->all();

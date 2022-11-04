@@ -241,6 +241,29 @@
                                 </div>
                             </div>
 
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Consent Form Event:</strong>
+                                    @if( $readonly == '' )
+                                    {!! Form::text('consent_event', $data->consent_event,
+                                        array('placeholder' => 'Consent Form Event','class' => 'form-control')) !!}
+                                    @else
+                                        {{$data->consent_event}}
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Consent Form Instrument:</strong>
+                                    @if( $readonly == '' )
+                                    {!! Form::text('consent_instrument', $data->consent_instrument,
+                                        array('placeholder' => 'Consent Form Instrument','class' => 'form-control')) !!}
+                                    @else
+                                        {{$data->consent_instrument}}
+                                    @endif
+                                </div>
+                            </div>
+
                             @if( $readonly != 'readonly' )
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                     &#160;

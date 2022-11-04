@@ -160,6 +160,20 @@
                                         array('placeholder' => 'Report ID','class' => 'form-control')) !!}
                                 </div>
                             </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Consent Form Event:</strong>
+                                    {!! Form::text('consent_event', null,
+                                        array('placeholder' => 'Consent Form Event','class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Consent Form Instrument:</strong>
+                                    {!! Form::text('consent_instrument', null,
+                                        array('placeholder' => 'Consent Form Instrument','class' => 'form-control')) !!}
+                                </div>
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                 &#160;
                             </div>
