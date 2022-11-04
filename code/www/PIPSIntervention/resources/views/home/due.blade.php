@@ -46,7 +46,7 @@
                                         <i class="fa-solid fa-thumbs-up fa-3x"></i>
                                     </div>
                                     <div class="col-8">
-                                        <h5>By supporting this study you are helping to make future patients better</h5>
+                                        <h5>By taking part in this study, you are helping to answer an important medical question</h5>
                                     </div>
                                 </div>
                             </div>
