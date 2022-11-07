@@ -13,9 +13,6 @@ describe( '001.002 - Header and footer formatted correctly', () => {
             //-- PIPS Logo
             cy.get('[data-cy=navlink-pips-home]')
                 .should('be.visible');
-            //-- Translate Logo
-            cy.get('[data-cy=navlink-translate-logo]')
-                .should('be.visible');
             //-- =========================================== --//
             //-- Footer
             //-- =========================================== --//
