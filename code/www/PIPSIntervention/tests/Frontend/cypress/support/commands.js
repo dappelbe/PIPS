@@ -54,7 +54,7 @@ Cypress.Commands.add('pipsDBAddStudy', () => {
                                                           uploadedpis, studyrandomisationreportid,
                                                           randonumfield, allocationfield, sitenamefield,
                                                           studystatusreportid, expectedrecruits,
-                                                          randodatefield) VALUES (1, '2022-04-22 10:42:53',
+                                                          randodatefield, potentialrecruitsreport, consent_event, consent_instrument) VALUES (999, '2022-04-22 10:42:53',
                                                                                   '2022-04-22 10:42:53', 'CRAFFT',
                                                                                   'https://redcap-cctr.octru.ox.ac.uk/api/',
                                                                                   'A71604FCD642E04E82712BAFBDFE09AF',
@@ -65,7 +65,7 @@ Cypress.Commands.add('pipsDBAddStudy', () => {
                                                                                   'https://kadoorie.octru.ox.ac.uk/CRAFFT_SIMS/Recruitment',
                                                                                   1, 579, 'ra_subj_id',
                                                                                   'ra_treat_alloc', 'ra_cte_id', 784,
-                                                                                  784, 'ra_date');`).then((result) => {
+                                                                                  784, 'ra_date', -1, '', '');`).then((result) => {
         expect(result.affectedRows).to.equal(1)
     });
 
