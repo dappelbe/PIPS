@@ -9,3 +9,6 @@ https://github.com/SMenigat/cypress-mailhog
 https://www.twilio.com/blog/customize-email-verification-password-resets-laravel
 
 Laravel Helper
+
+/home/pips/intervention/pipsrepo/code/www/PIPSIntervention
+/usr/local/bin/ea-php81
