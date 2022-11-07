@@ -34,9 +34,15 @@ describe('001.007 Consent Form is correctly formatted', () => {
             //-- ====================================================================
             cy.get('[data-cy=q1]').should('be.visible');
             cy.get('[data-cy=q1]')
-                .should( 'contain.text', '1.   I confirm that I have read the information sheet dated 15Dec2021 (version 0.1)\n' +
-                    '                                        for this study. I have had the opportunity to consider the information,\n' +
-                    '                                        ask questions and have had these answered satisfactorily.')
+                .should( 'contain.text',
+                    '1.\tI confirm that I have read the information sheet dated 18Aug2022');
+            cy.get('[data-cy=q1]')
+                .should( 'contain.text',
+                    '(version 1.0) for this study. I have had the opportunity to consider the');
+            cy.get('[data-cy=q1]')
+                .should( 'contain.text',
+                    'information, ask questions and have had these answered satisfactorily.');
+
             cy.get('[data-cy=pis-yes]').should('be.visible');
             cy.get('[data-cy=pis-yes]').invoke('attr', 'type').should('eq', 'radio');
             cy.get('[data-cy=pis-yes]').invoke('attr', 'name').should('eq', 'pis');
@@ -55,7 +61,8 @@ describe('001.007 Consent Form is correctly formatted', () => {
             //-- ====================================================================
             cy.get('[data-cy=q2]').should('be.visible');
             cy.get('[data-cy=q2]')
-                .should( 'contain.text', '2.   I understand that my participation is voluntary and that I am free to withdraw at any time without giving any reason, without my medical care or legal rights being affected.')
+                .should( 'contain.text',
+                    '2.\tI understand that my participation is voluntary and that I am free to withdraw at any time without giving any reason, without my medical care or legal rights being affected.')
             cy.get('[data-cy=voluntary-yes]').should('be.visible');
             cy.get('[data-cy=voluntary-yes]').invoke('attr', 'type').should('eq', 'radio');
             cy.get('[data-cy=voluntary-yes]').invoke('attr', 'name').should('eq', 'voluntary');
@@ -74,9 +81,7 @@ describe('001.007 Consent Form is correctly formatted', () => {
             //-- ====================================================================
             cy.get('[data-cy=q3]').should('be.visible');
             cy.get('[data-cy=q3]')
-                .should( 'contain.text', '3.   I understand that data collected during the study may be looked at by\n' +
-                    '                                        individuals from University of Oxford where it is relevant to my taking part in\n' +
-                    '                                        this research. I give permission for these individuals to have access to my records.')
+                .should( 'contain.text', '3.	I understand that data collected during the study may be looked at by individuals from University of Oxford where it is relevant to my taking part in this research. I give permission for these individuals to have access to my records.')
             cy.get('[data-cy=data-yes]').should('be.visible');
             cy.get('[data-cy=data-yes]').invoke('attr', 'type').should('eq', 'radio');
             cy.get('[data-cy=data-yes]').invoke('attr', 'name').should('eq', 'data');
