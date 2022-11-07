@@ -156,7 +156,7 @@
                                         </li>
                                         @if ( !str_contains($vm->consentFormLink, 'Not set'))
                                         <li>
-                                            <a href="{{$vm->consentFormLink}}" class="text-decoration-none" target="_blank">PIPS Consent Form</a>
+                                            <a href="{{asset($vm->consentFormLink)}}" class="text-decoration-none" target="_blank">PIPS Consent Form</a>
                                         </li>
                                         @endif
                                     </ul>
@@ -170,6 +170,13 @@
                                 </div>
                                 <div class="card-body align-middle">
                                     {!! $vm->pis !!}
+                                    @if ( !str_contains($vm->consentFormLinkRC, 'Not set'))
+                                        <ul>
+                                            <li>
+                                                <a href="{{asset($vm->consentFormLinkRC)}}" class="text-decoration-none" target="_blank">Study Consent Form</a>
+                                            </li>
+                                        </ul>
+                                    @endif
                                 </div>
                             </div>
                         </div>

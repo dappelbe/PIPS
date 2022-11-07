@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Jobs\DownloadREDCapConsentForm;
 use App\Mail\WelcomeMail;
 use App\Models\ConsentForm;
 use App\Utilities\Util;
@@ -88,7 +89,7 @@ class UserController extends Controller
         }
 
         \Mail::to($input['email'])->send(new WelcomeMail($input));
-
+        DownloadREDCapConsentForm::dispatch($user);
         return redirect()->route($this->primaryView)
             ->with('success','User created successfully');
     }

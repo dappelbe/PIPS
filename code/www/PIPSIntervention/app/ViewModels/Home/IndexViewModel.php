@@ -2,6 +2,7 @@
 
 namespace App\ViewModels\Home;
 
+use App\Jobs\DownloadREDCapConsentForm;
 use App\Models\ActivityTable;
 use App\Models\ConsentForm;
 use App\Models\Study;
@@ -25,6 +26,7 @@ class IndexViewModel
     public string $studyName;
     public string $pis;
     public string $consentFormLink;
+    public string $consentFormLinkRC;
 
     public IRetrieveREDCapData $redcapProject;
     public User|null $user = null;
@@ -94,7 +96,13 @@ class IndexViewModel
             {
                 $this->consentFormLink = $fName;
             }
-
+            DownloadREDCapConsentForm::dispatch($this->user);
+            if ( \File::exists(public_path($this->user->redcap_consent_form)) )
+            {
+                $this->consentFormLinkRC = $this->user->redcap_consent_form;
+            } else {
+                $this->consentFormLinkRC = 'Not set';
+            }
 
         }
     }
