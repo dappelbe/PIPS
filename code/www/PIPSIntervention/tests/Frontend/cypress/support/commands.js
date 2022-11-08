@@ -27,7 +27,7 @@ Cypress.Commands.add('pipsDBAddUser', () => {
     cy.task('queryDb', `INSERT INTO users (id, name, email, email_verified_at,
                                                    password, remember_token, created_at, updated_at,
                                                    last_login_at, last_login_ip, randomisation_number,
-                                                   studyid) VALUES (2, 'Test User',
+                                                   studyid) VALUES (999, 'Test User',
                                                                                   'test.user@Noidea.com', NULL,
                                                                                   '$2y$10$8T9RWIS3n3WQPhKArjL/H.HhDs.PgNfJ8/usl/l/6ktInJvksbe62',
                                                                                   'Vp5Jh0f1beK5qDBnWCwpklr2mUmt6LwL2uqGhAKF4iVIe3JACKQRLSet5vLZ',
@@ -36,12 +36,12 @@ Cypress.Commands.add('pipsDBAddUser', () => {
                                                                                   '2022-09-20 17:15:20',
                                                                                   '195.213.65.98',
                                                                                   'CR-RAC-10035',
-                                                                                  1);`).then((result) => {
+                                                                                  999);`).then((result) => {
         expect(result.affectedRows).to.equal(1)
     });
 });
 Cypress.Commands.add('pipsDBClearUser', () => {
-    cy.task('queryDb', 'DELETE FROM users where id = 2;').then((result) => {
+    cy.task('queryDb', 'DELETE FROM users where id = 999;').then((result) => {
         expect(result.affectedRows).to.equal(1)
     });
 });
@@ -71,7 +71,7 @@ Cypress.Commands.add('pipsDBAddStudy', () => {
 
 });
 Cypress.Commands.add('pipsDBClearStudy', () => {
-    cy.task('queryDb', 'DELETE FROM studydetails where id = 1;').then((result) => {
+    cy.task('queryDb', 'DELETE FROM studydetails where id = 999;').then((result) => {
         expect(result.affectedRows).to.equal(1)
     });
 });
