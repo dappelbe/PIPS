@@ -60,6 +60,8 @@ class HomeController extends Controller
         $pageTitle = 'Where am I in my study journey';
         $studyName = "Not Set";
         $randoDate = date('Y-m-d');
+        $mappingData = array();
+
         ActivityTable::StoreMyActivity($pageTitle, 'Accessed');
         $id = Auth::id();
         $user = User::find($id);
@@ -85,8 +87,6 @@ class HomeController extends Controller
                             if ( isset( $myRec ) ) {
                                 $events = $rc->exportEvents();
                                 $mapping = $rc->exportInstrumentEventMappings();
-
-                                $mappingData = array();
 
                                 foreach ( $events as $evt ) {
                                     $evtName = $evt['event_name'];
