@@ -35,7 +35,7 @@ Cypress.Commands.add('pipsDBAddUser', () => {
                                                                                   '2022-09-20 16:15:20',
                                                                                   '2022-09-20 17:15:20',
                                                                                   '195.213.65.98',
-                                                                                  'CR-RAC-10035',
+                                                                                  'PIPS-SITE1-10002',
                                                                                   999);`).then((result) => {
         expect(result.affectedRows).to.equal(1)
     });
@@ -56,16 +56,16 @@ Cypress.Commands.add('pipsDBAddStudy', () => {
                                                           studystatusreportid, expectedrecruits,
                                                           randodatefield, potentialrecruitsreport, consent_event, consent_instrument) VALUES (999, '2022-04-22 10:42:53',
                                                                                   '2022-04-22 10:42:53', 'CRAFFT',
-                                                                                  'https://redcap-cctr.octru.ox.ac.uk/api/',
-                                                                                  'A71604FCD642E04E82712BAFBDFE09AF',
+                                                                                  'https://redcap.octru.ox.ac.uk/api/',
+                                                                                  '5C0B6D78E781DFBBDD180969570637B9',
                                                                                   'signature.png',
                                                                                   'crafft@ndorms.ox.ac.uk',
                                                                                   '01865 228929',
                                                                                   'Oxford Trauma\\r\\nKadoorie Centre\\r\\nNDORMS\\r\\nUniversity of Oxford\\r\\nJohn Radcliffe Hospital\\r\\nHeadley Way\\r\\nOxford OX3 9DU',
                                                                                   'https://kadoorie.octru.ox.ac.uk/CRAFFT_SIMS/Recruitment',
-                                                                                  1, 579, 'ra_subj_id',
-                                                                                  'ra_treat_alloc', 'ra_cte_id', 784,
-                                                                                  784, 'ra_date', -1, '', '');`).then((result) => {
+                                                                                  1, 181, 'rando_num',
+                                                                                  'rando_allocation', 'redcap_data_access_group', 100,
+                                                                                  182, 'randodate', -1, 'randomisation_arm_1', 'consent');`).then((result) => {
         expect(result.affectedRows).to.equal(1)
     });
 
