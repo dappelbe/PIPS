@@ -70,7 +70,7 @@
                     </div>
                     <div class="row">
                         <div class="col-3">
-                            <a href="{{route('home')}}">
+                            <a href="{{route('home')}}" data-cy="home-btn">
                                 <button class="btn button-primary">
                                     <em class="fa-solid fa-arrow-left"></em> <span data-cy="back-button">Back</span>
                                 </button>
