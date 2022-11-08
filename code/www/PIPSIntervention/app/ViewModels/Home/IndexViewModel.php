@@ -43,6 +43,7 @@ class IndexViewModel
         $this->studyName = $this->notSet;
         $this->pis = $this->notSet;
         $this->consentFormLink = $this->notSet;
+        $this->consentFormLinkRC = $this->notSet;
         $this->user = (new User())->find($this->id);
     }
 
@@ -97,7 +98,7 @@ class IndexViewModel
                 $this->consentFormLink = $fName;
             }
             DownloadREDCapConsentForm::dispatch($this->user);
-            if ( \File::exists(public_path($this->user->redcap_consent_form)) )
+            if ( !is_null($this->user->redcap_consent_form) && \File::exists(public_path($this->user->redcap_consent_form)) )
             {
                 $this->consentFormLinkRC = $this->user->redcap_consent_form;
             } else {
