@@ -99,8 +99,17 @@ class HomeController extends Controller
                                         $mappingData[$evtName]['display_name'] = $evtName;
                                         $mappingData[$evtName]['visit'] = $evtName;
                                         $mappingData[$evtName]['event'] = $evt['unique_event_name'];
-                                        $mappingData[$evtName]['offset'] = $evt['day_offset'];
-                                        $mappingData[$evtName]['range'] = $evt['day_offset'] + $evt['offset_max'];
+                                        if ( array_key_exists('day_offset', $evt ) ) {
+                                            $mappingData[$evtName]['offset'] = $evt['day_offset'];
+                                        } else {
+                                            $mappingData[$evtName]['offset'] = 0;
+                                        }
+                                        if ( array_key_exists('offset_max', $evt ) ) {
+                                            $mappingData[$evtName]['range'] = $mappingData[$evtName]['offset'] + $evt['offset_max'];
+                                        } else {
+                                            $mappingData[$evtName]['range'] = 0;
+                                        }
+
                                         $mappingData[$evtName]['formstatus'] = '';
                                         $mappingData[$evtName]['comments'] = '';
                                         $mappingData[$evtName]['comments'] = $theVisit[0]['comment'];
